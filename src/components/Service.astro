@@ -1,83 +1,65 @@
-<section
-  id="services"
-  class="relative py-16 md:py-20 min-h-screen flex items-center justify-center overflow-hidden"
->
-  <!-- Background Image -->
-  <div class="absolute inset-0 z-0">
-    <img
-      src="/images/bg-service.jpg"
-      alt="Background"
-      class="w-full h-full object-cover opacity-100"
-    />
-    <div class="absolute inset-0 bg-white/20 backdrop-blur-[1px]"></div>
-  </div>
+---
+// Capabilities data
+const services = [
+  {
+    icon: "design_services",
+    title: "Tailored Customization",
+    desc: "We co-create furniture systems tailored to specific client layouts, from size modifications to custom wood staining and fabric selections."
+  },
+  {
+    icon: "precision_manufacturing",
+    title: "Contract Scale Manufacturing",
+    desc: "Supported by a specialized factory in Yogyakarta, we handle large volume productions for hotels, clinics, and commercial developments."
+  },
+  {
+    icon: "nature_people",
+    title: "Ethical Timber Sourcing",
+    desc: "We prioritize certified sustainably sourced teak, mindi, and wadang wood, dried to optimal moisture content for ultimate stability."
+  },
+  {
+    icon: "local_shipping",
+    title: "Delivery & Installation",
+    desc: "Our logistics team ensures secure shipping, handling, and on-site assembly to guarantee structural alignment and perfect finish."
+  }
+];
+---
 
-  <div
-    class="container mx-auto px-4 sm:px-6 relative z-10 flex items-center justify-center"
-  >
-    <!-- Main Content Card -->
-    <div
-      class="max-w-3xl w-full bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)] rounded-lg md:rounded-none p-5 sm:p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-10"
-    >
-      <!-- Left Side: Images - Horizontal on mobile, vertical on desktop -->
-      <div class="w-full md:w-[32%] flex flex-row md:flex-col gap-3 sm:gap-4">
-        <div
-          class="flex-1 aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-zinc-100 bg-zinc-50 flex items-center justify-center group"
-        >
-          <img
-            src="/images/services4.png"
-            alt="Quality Sofa"
-            class="w-full h-full object-contain p-3 sm:p-2 group-hover:scale-105 transition-transform duration-300"
-          />
-        </div>
-        <div
-          class="flex-1 aspect-square overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-zinc-100 bg-zinc-50 flex items-center justify-center group"
-        >
-          <img
-            src="/images/products/Products-details/Produk kjas 14 2.png"
-            alt="Furniture Detail"
-            class="w-auto h-full object-contain p-3 sm:p-2 group-hover:scale-105 transition-transform duration-300"
-          />
-        </div>
-      </div>
+<section id="services" class="py-32 bg-[#FAF7F2] border-b border-primary/5">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="mb-20 text-center max-w-2xl mx-auto">
+      <span class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase block mb-3">Capabilities</span>
+      <h2 class="font-display text-4xl md:text-6xl text-background-dark leading-tight mb-6">
+        Contract <span class="font-serif italic text-primary">Capabilities</span>
+      </h2>
+      <p class="text-background-dark/70 text-xs md:text-sm leading-relaxed font-sans font-light">
+        PT Sorajati Dharma offers standardized production processes and craftsmanship to deliver strong, comfortable, and high-value furniture for commercial and contract needs.
+      </p>
+    </div>
 
-      <!-- Right Side: Content -->
-      <div class="w-full md:w-[50%] flex flex-col justify-between py-2">
-        <div class="space-y-4 sm:space-y-6">
-          <p
-            class="text-sm sm:text-base md:text-[18px] leading-relaxed text-justify font-light tracking-wide uppercase"
-            style="color: #994e23;"
-          >
-            PT KARTIKA JAYA ANANDA SEJAHTERA IS HERE AS A TRUSTED PARTNER IN
-            QUALITY SOFA AND CHAIR MANUFACTURING. SUPPORTED BY STANDARDIZED
-            PRODUCTION PROCESSES AND EXPERIENCED PROFESSIONALS, WE ARE COMMITTED
-            TO DELIVERING STRONG, COMFORTABLE, AND HIGH-VALUE FURNITURE FOR
-            EVERY PROJECT NEED.
-          </p>
-        </div>
-
-        <div class="mt-6 sm:mt-8 md:mt-12">
-          <h2
-            class="font-serif text-5xl sm:text-6xl md:text-[90px] tracking-tighter leading-none text-center md:text-left"
-            style="color: #994e23; opacity: 0.3;"
-          >
-            SERVICE
-          </h2>
-        </div>
-      </div>
+    <!-- Capabilities Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {
+        services.map((item) => (
+          <div class="bg-white border border-primary/10 p-8 flex flex-col justify-between h-[300px] shadow-sm hover:shadow-md transition-shadow">
+            <div>
+              <!-- Icon Circle -->
+              <div class="w-12 h-12 border border-primary/20 flex items-center justify-center text-primary mb-6">
+                <span class="material-icons-outlined text-2xl">{item.icon}</span>
+              </div>
+              <h3 class="font-display text-lg font-bold text-background-dark tracking-wide mb-3">
+                {item.title}
+              </h3>
+              <p class="text-background-dark/70 text-[11px] leading-relaxed font-sans font-light">
+                {item.desc}
+              </p>
+            </div>
+            
+            <div class="w-8 h-[1px] bg-primary/30"></div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
-
-<style>
-  .font-serif {
-    font-family: "Playfair Display", serif;
-  }
-
-  /* Touch-friendly mobile optimization */
-  @media (max-width: 768px) {
-    #services {
-      -webkit-tap-highlight-color: transparent;
-    }
-  }
-</style>

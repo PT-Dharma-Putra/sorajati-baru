@@ -4,14 +4,15 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				primary: "#8B572A", // Terracotta
-				secondary: "#D4A373", // Lighter Tan
-				"background-light": "#FDFCF0", // Ivory/Off-white
-				"background-dark": "#1A1612", // Deep Espresso
+				primary: "#173B21", // Deep Forest Green
+				secondary: "#C59B27", // Champagne Gold
+				"background-light": "#FAF8F5", // Soft Warm Ivory
+				"background-dark": "#0E2013", // Deep Spruce/Forest Black
 				"accent-tan": "#BC8F5F",
+				"accent-gold": "#D4AF37", // Bright Gold Accent
 			},
 			fontFamily: {
-				display: ["Playfair Display", "serif"],
+				display: ["Playfair Display", "Arsenal", "serif"],
 				sans: ["Inter", "sans-serif"],
 				script: ["Great Vibes", "cursive"],
 			},

@@ -15,38 +15,38 @@ export async function getStaticPaths() {
 const { project, nextProjectSlug } = Astro.props;
 ---
 
-<Layout title={`${project.name} | KJAS`}>
+<Layout title={`${project.name} | Sorajati Dharma Proyek`}>
   <!-- Navigation Buttons - Top Left Fixed -->
-  <div class="fixed top-6 left-6 z-50 flex items-center gap-4">
+  <div class="fixed top-6 left-6 z-50 flex items-center gap-3">
     <a
       href="/#project"
-      class="bg-white/90 backdrop-blur-md p-3 rounded-full shadow-lg text-zinc-800 hover:bg-zinc-800 hover:text-white transition-all duration-300 group ring-1 ring-black/5"
-      aria-label="Kembali ke Proyek"
+      class="bg-white border border-primary/10 p-3 rounded-none shadow-md text-background-dark hover:bg-primary hover:text-white transition-all duration-300 group"
+      aria-label="Back to Projects"
     >
       <span
-        class="material-icons-outlined text-2xl group-hover:-translate-x-1 transition-transform"
+        class="material-icons-outlined text-xl group-hover:-translate-x-1 transition-transform flex items-center justify-center"
         >arrow_back</span
       >
     </a>
     <a
       href={`/project/${nextProjectSlug}`}
-      class="bg-white/90 backdrop-blur-md px-6 py-3 rounded-full shadow-lg text-zinc-800 hover:bg-zinc-800 hover:text-white transition-all duration-300 flex items-center gap-3 group ring-1 ring-black/5"
+      class="bg-white border border-primary/10 px-6 py-3 rounded-none shadow-md text-background-dark hover:bg-primary hover:text-white transition-all duration-300 flex items-center gap-2 group"
     >
-      <span class="text-xs font-bold tracking-[0.2em] uppercase"
-        >Proyek Berikutnya</span
+      <span class="text-[9px] font-bold tracking-[0.2em] uppercase"
+        >Next Project</span
       >
       <span
-        class="material-icons-outlined text-xl group-hover:translate-x-1 transition-transform"
+        class="material-icons-outlined text-base group-hover:translate-x-1 transition-transform flex items-center justify-center"
         >arrow_forward</span
       >
     </a>
   </div>
 
   <!-- Main Content Wrapper - Full Screen Split -->
-  <div class="min-h-screen w-full flex flex-col lg:flex-row bg-white">
+  <div class="min-h-screen w-full flex flex-col lg:flex-row bg-[#FAF7F2]">
     <!-- Left: Image Slider (60% width) -->
     <div
-      class="w-full lg:w-[60%] bg-[#F5F5F7] relative h-[50vh] lg:h-screen order-2 lg:order-1"
+      class="w-full lg:w-[60%] bg-white relative h-[50vh] lg:h-screen order-2 lg:order-1 border-r border-primary/10 flex items-center"
     >
       <div class="swiper detail-slider w-full h-full">
         <div class="swiper-wrapper">
@@ -57,7 +57,7 @@ const { project, nextProjectSlug } = Astro.props;
                   <img
                     src={image}
                     alt={project.name}
-                    class="w-full h-full object-contain shadow-sm"
+                    class="w-auto h-auto max-w-full max-h-full object-contain shadow-sm border border-primary/5 p-2 bg-white"
                   />
                 </div>
               ))
@@ -68,7 +68,7 @@ const { project, nextProjectSlug } = Astro.props;
                 <img
                   src={project.img}
                   alt={project.name}
-                  class="w-full h-full object-contain shadow-sm"
+                  class="w-auto h-auto max-w-full max-h-full object-contain shadow-sm border border-primary/5 p-2 bg-white"
                 />
               </div>
             )
@@ -76,56 +76,47 @@ const { project, nextProjectSlug } = Astro.props;
         </div>
         <!-- Slider Navigation -->
         <div
-          class="swiper-button-prev !text-zinc-800 bg-white/80 backdrop-blur-md border border-zinc-200 p-8 rounded-full hover:bg-white hover:text-[#8B572A] transition-all shadow-lg left-4 lg:left-8 flex items-center justify-center group"
+          class="swiper-button-prev !text-primary bg-white/80 border border-primary/10 p-6 rounded-none hover:bg-primary hover:text-white transition-all shadow-md left-4 lg:left-8 flex items-center justify-center group"
         >
           <span
-            class="material-icons-outlined !text-3xl group-hover:scale-110 transition-transform"
+            class="material-icons-outlined text-lg group-hover:scale-110 transition-transform"
             >keyboard_arrow_left</span
           >
         </div>
         <div
-          class="swiper-button-next !text-zinc-800 bg-white/80 backdrop-blur-md border border-zinc-200 p-8 rounded-full hover:bg-white hover:text-[#8B572A] transition-all shadow-lg right-4 lg:right-8 flex items-center justify-center group"
+          class="swiper-button-next !text-primary bg-white/80 border border-primary/10 p-6 rounded-none hover:bg-primary hover:text-white transition-all shadow-md right-4 lg:right-8 flex items-center justify-center group"
         >
           <span
-            class="material-icons-outlined !text-3xl group-hover:scale-110 transition-transform"
+            class="material-icons-outlined text-lg group-hover:scale-110 transition-transform"
             >keyboard_arrow_right</span
           >
         </div>
       </div>
-
-      <!-- Pagination/Indicators can go here if needed -->
     </div>
 
     <!-- Right: Project Details (40% width) -->
     <div
-      class="w-full lg:w-[40%] bg-white text-zinc-800 h-auto lg:h-screen lg:overflow-y-auto order-1 lg:order-2"
+      class="w-full lg:w-[40%] bg-[#FAF7F2] text-background-dark h-auto lg:h-screen lg:overflow-y-auto order-1 lg:order-2 flex items-center"
     >
-      <div class="p-8 lg:p-16 flex flex-col min-h-full justify-center">
+      <div class="p-8 lg:p-16 flex flex-col min-h-full justify-center w-full">
         <!-- Header -->
-        <div class="mb-12">
-          <h1 class="flex flex-col items-start leading-none text-zinc-900 mb-6">
-            <span
-              class="font-['Great_Vibes'] text-4xl lg:text-5xl text-[#8B572A] mb-2"
-              >Proyek</span
-            >
-            <span
-              class="font-sans text-4xl lg:text-6xl font-bold tracking-tight uppercase"
-              >{project.name.replace("Project ", "")}</span
-            >
+        <div class="mb-12 border-b border-primary/10 pb-8">
+          <span class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase block mb-2">Installation</span>
+          <h1 class="font-display text-4xl lg:text-5xl font-bold tracking-tight text-background-dark uppercase leading-tight">
+            {project.name}
           </h1>
-          <div class="w-20 h-1 bg-[#8B572A]"></div>
         </div>
 
-        <!-- Description -->
-        <div class="space-y-10">
+        <!-- Details -->
+        <div class="space-y-8">
           <div>
             <h2
-              class="text-sm font-bold uppercase tracking-[0.2em] text-[#8B572A] mb-4"
+              class="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/75 mb-3"
             >
-              Deskripsi
+              Description
             </h2>
             <p
-              class="text-base lg:text-lg leading-relaxed text-zinc-600 text-justify font-light"
+              class="text-xs md:text-sm leading-relaxed text-background-dark/80 font-sans font-light text-justify"
             >
               {project.description}
             </p>
@@ -133,15 +124,15 @@ const { project, nextProjectSlug } = Astro.props;
 
           <div>
             <h2
-              class="text-sm font-bold uppercase tracking-[0.2em] text-[#8B572A] mb-4"
+              class="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/75 mb-3"
             >
-              Item Furnitur
+              Furniture Supplied
             </h2>
-            <ul class="grid grid-cols-1 gap-3">
+            <ul class="grid grid-cols-1 gap-2.5">
               {
                 project.furniture.map((item) => (
-                  <li class="flex items-start text-zinc-700 font-medium">
-                    <span class="w-2 h-2 bg-[#8B572A] rounded-full mr-3 mt-2 flex-shrink-0" />
+                  <li class="flex items-start text-xs text-background-dark/85 font-medium leading-relaxed">
+                    <span class="w-1.5 h-1.5 border border-primary/30 bg-primary/10 rounded-none mr-2.5 mt-1.5 flex-shrink-0" />
                     {item}
                   </li>
                 ))
@@ -150,28 +141,39 @@ const { project, nextProjectSlug } = Astro.props;
           </div>
         </div>
 
-        <!-- Project Specs Grid -->
+        <!-- Project Specs -->
         <div
-          class="grid grid-cols-2 gap-y-8 gap-x-4 mt-16 pt-10 border-t border-zinc-100"
+          class="grid grid-cols-2 gap-y-6 gap-x-4 mt-12 pt-8 border-t border-primary/10"
         >
           <div>
             <h4
-              class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2"
+              class="text-[9px] font-bold text-background-dark/40 uppercase tracking-widest mb-1"
             >
-              Tahun
+              Year Completed
             </h4>
-            <p class="text-lg font-semibold text-zinc-900">{project.year}</p>
+            <p class="text-sm font-bold text-background-dark font-display">{project.year}</p>
           </div>
           <div>
             <h4
-              class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2"
+              class="text-[9px] font-bold text-background-dark/40 uppercase tracking-widest mb-1"
             >
-              Klien
+              Client
             </h4>
-            <p class="text-lg font-semibold text-zinc-900 uppercase">
+            <p class="text-sm font-bold text-background-dark uppercase font-display">
               {project.client}
             </p>
           </div>
+        </div>
+
+        <!-- Direct WhatsApp Inquiry -->
+        <div class="mt-12">
+          <a
+            href={`https://wa.me/81128507788?text=Hello%20Sorajati%20Dharma,%20I'm%20inquiring%20about%20the%20furniture%20supplied%20for%20project%20${encodeURIComponent(project.name)}.`}
+            target="_blank"
+            class="block w-full text-center bg-primary text-white py-4 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-primary/95 transition-colors shadow-sm"
+          >
+            Inquire About This Design
+          </a>
         </div>
       </div>
     </div>
@@ -186,7 +188,7 @@ const { project, nextProjectSlug } = Astro.props;
   import "swiper/css/effect-fade";
 
   const initSwiper = () => {
-    const swiper = new Swiper(".detail-slider", {
+    new Swiper(".detail-slider", {
       modules: [Navigation, Autoplay, EffectFade],
       effect: "fade",
       fadeEffect: {
@@ -196,7 +198,7 @@ const { project, nextProjectSlug } = Astro.props;
       observer: true,
       observeParents: true,
       autoplay: {
-        delay: 4000,
+        delay: 5000,
         disableOnInteraction: false,
       },
       navigation: {
@@ -208,16 +210,9 @@ const { project, nextProjectSlug } = Astro.props;
 
   document.addEventListener("astro:page-load", initSwiper);
   document.addEventListener("DOMContentLoaded", initSwiper);
-  initSwiper();
 </script>
 
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
-
-  .font-['Great_Vibes'] {
-    font-family: "Great Vibes", cursive;
-  }
-
   .swiper-button-next::after,
   .swiper-button-prev::after {
     display: none !important;

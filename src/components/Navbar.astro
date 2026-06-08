@@ -1,27 +1,29 @@
 <nav
   id="navbar"
-  class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-background-light/80 backdrop-blur-md border-b border-primary/10"
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-transparent border-b border-white/10 py-4 backdrop-blur-none"
 >
   <div
-    class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-50 transition-all duration-300"
+    class="max-w-7xl mx-auto px-6 flex justify-between items-center relative z-50 transition-all duration-300"
     id="nav-container"
   >
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-3">
       <img
-        src="/images/LOGO KJAS 1.png"
-        alt="Logo KJAS"
-        class="h-12 w-auto object-contain"
+        src="/images/logo-kjas.svg"
+        alt="Logo Sora"
+        class="h-10 w-auto object-contain rounded shadow-sm"
       />
-      <a href="/#home" class="flex flex-col leading-tight group">
+      <a href="/#home" class="flex flex-col leading-none group">
         <span
-          class="font-display text-lg md:text-xl font-bold text-slate-800 tracking-tight transition-all duration-300 group-hover:text-primary whitespace-nowrap"
+          id="brand-title"
+          class="font-display text-base md:text-lg font-bold text-white tracking-wider transition-all duration-500 group-hover:text-secondary whitespace-nowrap"
         >
-          Kartika Jaya
+          SORAJATI
         </span>
         <span
-          class="font-sans text-[9px] md:text-[11px] font-semibold text-slate-500 uppercase tracking-[0.25em] -mt-1 transition-all duration-300 group-hover:text-primary/80 whitespace-nowrap"
+          id="brand-sub"
+          class="font-sans text-[8px] md:text-[9px] font-semibold text-secondary/90 uppercase tracking-[0.3em] mt-0.5 transition-all duration-500 group-hover:text-white whitespace-nowrap"
         >
-          Ananda Sejahtera
+          DHARMA
         </span>
       </a>
     </div>
@@ -30,43 +32,44 @@
     <div class="hidden md:flex items-center gap-8">
       <a
         href="/#home"
-        class="text-sm font-medium text-slate-600 hover:text-primary transition-colors uppercase tracking-wider"
+        class="nav-link text-[11px] font-semibold text-white/90 hover:text-secondary transition-colors uppercase tracking-[0.2em]"
         >Home</a
       >
       <a
         href="/#about"
-        class="text-sm font-medium text-slate-600 hover:text-primary transition-colors uppercase tracking-wider"
+        class="nav-link text-[11px] font-semibold text-white/90 hover:text-secondary transition-colors uppercase tracking-[0.2em]"
         >About Us</a
       >
       <a
-        href="/#services"
-        class="text-sm font-medium text-slate-600 hover:text-primary transition-colors uppercase tracking-wider"
-        >Services</a
+        href="/#vision-mission"
+        class="nav-link text-[11px] font-semibold text-white/90 hover:text-secondary transition-colors uppercase tracking-[0.2em]"
+        >Visi Misi</a
       >
       <a
         href="/#product"
-        class="text-sm font-medium text-slate-600 hover:text-primary transition-colors uppercase tracking-wider"
+        class="nav-link text-[11px] font-semibold text-white/90 hover:text-secondary transition-colors uppercase tracking-[0.2em]"
         >Product</a
       >
       <a
         href="/#project"
-        class="text-sm font-medium text-slate-600 hover:text-primary transition-colors uppercase tracking-wider"
+        class="nav-link text-[11px] font-semibold text-white/90 hover:text-secondary transition-colors uppercase tracking-[0.2em]"
         >Project</a
       >
       <a
-        href="/articles"
-        class="text-sm font-medium text-slate-600 hover:text-primary transition-colors uppercase tracking-wider"
+        href="/#articles"
+        class="nav-link text-[11px] font-semibold text-white/90 hover:text-secondary transition-colors uppercase tracking-[0.2em]"
         >Articles</a
       >
       <a
+        id="nav-inquiry-btn"
         href="https://wa.me/81128507788"
-        class="bg-primary text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-primary/90 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+        class="border border-white text-white px-6 py-2 rounded-none text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all shadow-sm"
         >Contact Us</a
       >
     </div>
 
     <!-- Mobile Menu Button -->
-    <button id="menu-toggle" class="p-2 text-primary md:hidden">
+    <button id="menu-toggle" class="p-2 text-white md:hidden transition-colors duration-500">
       <span class="material-icons-outlined">menu</span>
     </button>
   </div>
@@ -75,7 +78,7 @@
 <!-- Mobile Menu Overlay -->
 <div
   id="mobile-menu"
-  class="fixed inset-0 bg-background-light/98 backdrop-blur-2xl z-[100] transform translate-x-full transition-transform duration-500 md:hidden flex flex-col justify-center items-center gap-8"
+  class="fixed inset-0 bg-background-light z-[100] transform translate-x-full transition-transform duration-500 md:hidden flex flex-col justify-center items-center gap-8"
 >
   <button id="menu-close" class="absolute top-6 right-6 p-2 text-primary">
     <span class="material-icons-outlined text-3xl">close</span>
@@ -84,42 +87,37 @@
   <div class="flex flex-col items-center gap-8">
     <a
       href="/#home"
-      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
+      class="mobile-link text-2xl font-display font-bold text-background-dark hover:text-primary transition-colors tracking-wide uppercase"
       >Home</a
     >
     <a
       href="/#about"
-      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
+      class="mobile-link text-2xl font-display font-bold text-background-dark hover:text-primary transition-colors tracking-wide uppercase"
       >About Us</a
     >
     <a
-      href="/#services"
-      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
-      >Services</a
+      href="/#vision-mission"
+      class="mobile-link text-2xl font-display font-bold text-background-dark hover:text-primary transition-colors tracking-wide uppercase"
+      >Visi Misi</a
     >
     <a
       href="/#product"
-      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
+      class="mobile-link text-2xl font-display font-bold text-background-dark hover:text-primary transition-colors tracking-wide uppercase"
       >Product</a
     >
     <a
       href="/#project"
-      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
+      class="mobile-link text-2xl font-display font-bold text-background-dark hover:text-primary transition-colors tracking-wide uppercase"
       >Project</a
     >
     <a
-      href="/#workflow"
-      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
-      >Work Flow</a
-    >
-    <a
-      href="/articles"
-      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
+      href="/#articles"
+      class="mobile-link text-2xl font-display font-bold text-background-dark hover:text-primary transition-colors tracking-wide uppercase"
       >Articles</a
     >
     <a
-      href="/#contact"
-      class="mobile-link text-3xl font-display font-bold text-slate-800 hover:text-primary transition-colors"
+      href="https://wa.me/81128507788"
+      class="mobile-link border border-primary text-primary px-8 py-3 text-xs font-bold uppercase tracking-[0.2em] hover:bg-primary hover:text-white transition-all"
       >Contact Us</a
     >
   </div>
@@ -136,24 +134,105 @@
 
     // Scroll effect
     const handleScroll = () => {
+      const brandTitle = document.getElementById("brand-title");
+      const brandSub = document.getElementById("brand-sub");
+      const navLinks = document.querySelectorAll(".nav-link");
+      const inquiryBtn = document.getElementById("nav-inquiry-btn");
+
       if (window.scrollY > 50) {
-        navbar?.classList.add("glass-premium", "py-2");
+        navbar?.classList.add(
+          "top-4",
+          "w-[90%]",
+          "max-w-5xl",
+          "rounded-full",
+          "left-1/2",
+          "-translate-x-1/2",
+          "shadow-lg",
+          "bg-white/80",
+          "backdrop-blur-md",
+          "py-2.5",
+          "border",
+          "border-primary/10"
+        );
         navbar?.classList.remove(
-          "bg-background-light/80",
+          "top-0",
+          "w-full",
+          "left-0",
+          "bg-transparent",
           "border-b",
-          "border-primary/10",
+          "border-white/10",
+          "py-4",
+          "backdrop-blur-none"
         );
         navContainer?.classList.remove("py-4");
         navContainer?.classList.add("py-1");
+
+        // Brand colors to dark
+        brandTitle?.classList.remove("text-white");
+        brandTitle?.classList.add("text-background-dark");
+        brandSub?.classList.remove("text-secondary/90");
+        brandSub?.classList.add("text-primary/70");
+
+        // Links to dark
+        navLinks.forEach((link) => {
+          link.classList.remove("text-white/90");
+          link.classList.add("text-background-dark/80");
+        });
+
+        // Inquiry Button to dark outline
+        inquiryBtn?.classList.remove("border-white", "text-white");
+        inquiryBtn?.classList.add("border-primary", "text-primary");
+
+        // Menu Toggle to dark
+        menuToggle?.classList.remove("text-white");
+        menuToggle?.classList.add("text-primary");
       } else {
-        navbar?.classList.remove("glass-premium", "py-2");
+        navbar?.classList.remove(
+          "top-4",
+          "w-[90%]",
+          "max-w-5xl",
+          "rounded-full",
+          "left-1/2",
+          "-translate-x-1/2",
+          "shadow-lg",
+          "bg-white/80",
+          "backdrop-blur-md",
+          "py-2.5",
+          "border",
+          "border-primary/10"
+        );
         navbar?.classList.add(
-          "bg-background-light/80",
+          "top-0",
+          "w-full",
+          "left-0",
+          "bg-transparent",
           "border-b",
-          "border-primary/10",
+          "border-white/10",
+          "py-4",
+          "backdrop-blur-none"
         );
         navContainer?.classList.remove("py-1");
         navContainer?.classList.add("py-4");
+
+        // Brand colors back to light
+        brandTitle?.classList.add("text-white");
+        brandTitle?.classList.remove("text-background-dark");
+        brandSub?.classList.add("text-secondary/90");
+        brandSub?.classList.remove("text-primary/70");
+
+        // Links back to light
+        navLinks.forEach((link) => {
+          link.classList.add("text-white/90");
+          link.classList.remove("text-background-dark/80");
+        });
+
+        // Inquiry Button back to light outline
+        inquiryBtn?.classList.add("border-white", "text-white");
+        inquiryBtn?.classList.remove("border-primary", "text-primary");
+
+        // Menu Toggle back to white
+        menuToggle?.classList.add("text-white");
+        menuToggle?.classList.remove("text-primary");
       }
     };
 

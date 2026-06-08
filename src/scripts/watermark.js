@@ -10,7 +10,7 @@ export function applyWatermark(images) {
       images = [images];
   }
   
-  const logoSrc = '/images/logo-kjas.jpg'; // Or generic logo if preferred
+  const logoSrc = '/images/logo-kjas.svg'; // Or generic logo if preferred
 
   images.forEach(async (img) => {
     if (img.dataset.watermarked || img.closest('.watermark-wrapper')) return;
@@ -39,7 +39,7 @@ export function applyWatermark(images) {
       ctx.drawImage(img, 0, 0, originalWidth, originalHeight);
 
       // --- 1. Draw Text Watermark (Diagonal) ---
-      const text = "PT KARTIKA JAYA ANANDA SEJAHTERA";
+      const text = "PT SORAJATI DHARMA";
       ctx.save();
       ctx.translate(originalWidth / 2, originalHeight / 2);
       ctx.rotate(-Math.PI / 6); 

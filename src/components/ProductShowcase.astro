@@ -1,144 +1,164 @@
 ---
 import { productCategories } from "../data/products";
+
+// Gather all items from all categories
+const allProducts = productCategories.flatMap((category) => category.items);
+const featuredProducts = allProducts.slice(0, 8);
+// Unique filters
+const filterCategories = ["ALL", "Chair", "Sofa", "Table", "Bench", "Accessories"];
 ---
 
-<div id="product" class="max-w-7xl mx-auto px-6">
-  <div
-    class="mb-10 flex flex-col md:flex-row justify-between items-end gap-6 border-b border-primary/10 pb-8"
-  >
-    <div>
-      <h2 class="font-display text-5xl text-primary font-bold">
-        KJAS PRODUCTS
-      </h2>
+<section id="product" class="py-32 bg-[#FAF7F2] border-b border-primary/5">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-primary/10 pb-8">
+      <div>
+        <span class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase block mb-3">Our Collection</span>
+        <h2 class="font-display text-4xl md:text-6xl text-background-dark leading-tight">
+          Exotic <span class="font-serif italic text-primary">Wood Creations</span>
+        </h2>
+      </div>
+      <a
+        href="/products"
+        class="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] text-primary hover:gap-4 transition-all uppercase"
+      >
+        <span>View Full Catalog</span>
+        <span class="material-icons-outlined text-sm">east</span>
+      </a>
     </div>
-    <a
-      href="/products"
-      class="flex items-center gap-2 text-primary font-medium cursor-pointer hover:gap-4 transition-all"
-    >
-      <span>MORE INFORMATION</span>
-      <span class="material-icons-outlined">south_east</span>
-    </a>
-  </div>
 
-  <div class="swiper product-slider overflow-hidden !pb-12">
-    <div class="swiper-wrapper">
+    <!-- Category Filter Tabs -->
+    <div class="flex flex-wrap gap-3 mb-12" id="filter-tabs-container">
       {
-        productCategories
-          .flatMap((slide) => slide.items)
-          .map((item) => (
-            <div class="swiper-slide select-none">
-              <div
-                class="group cursor-pointer product-item"
-                data-product={JSON.stringify(item)}
-              >
-                <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden mb-4 relative aspect-[4/5] flex items-center justify-center">
-                  <img
-                    alt={item.name}
-                    class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
-                    src={item.img}
-                  />
-                </div>
-                <div class="bg-primary p-4 rounded-xl text-white text-xs font-medium tracking-wider uppercase text-center group-hover:bg-secondary transition-colors">
-                  [{item.id}] {item.name}
-                </div>
-              </div>
-            </div>
-          ))
+        filterCategories.map((category) => (
+          <a
+            href={`/products?category=${category}`}
+            class="px-6 py-2.5 border text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 bg-white text-primary border-primary/10 hover:border-primary"
+          >
+            {category}
+          </a>
+        ))
       }
     </div>
-    <div class="swiper-pagination"></div>
+
+    <!-- Product Grid -->
     <div
-      class="swiper-button-prev text-primary bg-white/80 p-6 rounded-full shadow-lg hover:bg-white transition-colors flex items-center justify-center"
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
+      id="homepage-product-grid"
     >
-      <span class="material-icons-outlined">keyboard_arrow_left</span>
+      {
+        featuredProducts.map((item) => (
+          <div
+            class="group cursor-pointer product-card-item transition-all duration-500 animate-fade-in"
+            data-product={JSON.stringify(item)}
+            data-category={item.category}
+          >
+            <div class="aspect-[4/5] bg-white border border-primary/10 p-6 flex items-center justify-center relative overflow-hidden mb-4 shadow-sm group-hover:shadow-md transition-shadow">
+              <img
+                src={item.img}
+                alt={item.name}
+                class="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <span class="bg-white text-primary px-4 py-2 text-[9px] font-bold tracking-[0.25em] uppercase border border-primary/15 shadow-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  Quick View
+                </span>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="block text-[9px] uppercase tracking-widest text-primary/60 font-semibold mb-1">{item.category}</span>
+              <h4 class="font-display text-sm font-bold text-background-dark tracking-wider">{item.name}</h4>
+              <span class="block text-[10px] font-mono text-background-dark/50 mt-1">[{item.id}]</span>
+            </div>
+          </div>
+        ))
+      }
     </div>
-    <div
-      class="swiper-button-next text-primary bg-white/80 p-6 rounded-full shadow-lg hover:bg-white transition-colors flex items-center justify-center"
-    >
-      <span class="material-icons-outlined">keyboard_arrow_right</span>
+
+    <!-- View All Button -->
+    <div class="mt-16 flex justify-center">
+      <a
+        href="/products"
+        class="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-primary/95 transition-all shadow-md group"
+      >
+        <span>Lihat Semua Produk</span>
+        <span class="material-icons-outlined text-sm group-hover:translate-x-1 transition-transform">east</span>
+      </a>
     </div>
   </div>
-</div>
+</section>
 
-<!-- Product Modal -->
+<!-- Product Detail Modal -->
 <div
   id="product-modal"
   class="fixed inset-0 z-[100] hidden items-center justify-center p-4 lg:p-8"
 >
   <div
-    class="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity duration-300"
+    class="absolute inset-0 bg-background-dark/85 backdrop-blur-sm transition-opacity duration-300"
     id="modal-backdrop"
   >
   </div>
   <div
-    class="relative bg-[#f8f5f2] w-full max-w-5xl rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row transform transition-all scale-95 opacity-0 max-h-[95vh] md:max-h-[90vh]"
+    class="relative bg-[#FAF7F2] w-full max-w-5xl border border-primary/15 shadow-2xl overflow-hidden flex flex-col md:flex-row transform transition-all scale-95 opacity-0 max-h-[95vh] md:max-h-[90vh]"
     id="modal-content"
   >
+    <!-- Close Button -->
     <button
       id="modal-close"
-      class="absolute top-4 right-4 z-[110] p-2 text-slate-500 hover:text-red-500 transition-colors bg-white/50 rounded-full hover:bg-white shadow-sm"
+      class="absolute top-4 right-4 z-[110] p-2 text-background-dark/50 hover:text-red-500 transition-colors bg-white/80 border border-primary/10 rounded-none shadow-sm"
     >
-      <span class="material-icons-outlined text-2xl md:text-3xl">close</span>
+      <span class="material-icons-outlined text-xl">close</span>
     </button>
 
-    <div
-      class="w-full md:w-1/2 bg-white p-6 md:p-8 flex flex-col gap-6 overflow-y-auto"
-    >
-      <div
-        class="swiper modal-gallery w-full aspect-square rounded-2xl overflow-hidden bg-zinc-50 border border-zinc-100"
-      >
+    <!-- Gallery (Left) -->
+    <div class="w-full md:w-1/2 bg-white p-6 md:p-8 flex flex-col gap-6 overflow-y-auto border-r border-primary/10">
+      <div class="swiper modal-gallery w-full aspect-square overflow-hidden bg-zinc-50 border border-primary/5">
         <div class="swiper-wrapper" id="modal-gallery-wrapper"></div>
-        <div
-          class="swiper-button-prev !text-primary after:!text-xl bg-white/80 p-5 rounded-full shadow-sm hover:bg-white transiton-colors"
-        >
-        </div>
-        <div
-          class="swiper-button-next !text-primary after:!text-xl bg-white/80 p-5 rounded-full shadow-sm hover:bg-white transiton-colors"
-        >
-        </div>
+        <div class="swiper-button-prev !text-primary after:!text-xl bg-white/80 p-5 rounded-none border border-primary/10 shadow-sm hover:bg-white transition-colors"></div>
+        <div class="swiper-button-next !text-primary after:!text-xl bg-white/80 p-5 rounded-none border border-primary/10 shadow-sm hover:bg-white transition-colors"></div>
       </div>
-      <div class="swiper modal-thumbs w-full h-20 md:h-24 p-1">
+      <div class="swiper modal-thumbs w-full h-16 p-1">
         <div class="swiper-wrapper" id="modal-thumbs-wrapper"></div>
       </div>
     </div>
 
-    <div
-      class="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-center overflow-y-auto bg-[#faf8f6]"
-    >
-      <h3
-        id="modal-title"
-        class="font-display text-2xl md:text-4xl font-bold text-[#8B4513] mb-4 md:mb-6 leading-tight break-words"
-      >
-      </h3>
-      <div class="space-y-6 md:space-y-8 text-[#5D4037]">
-        <div
-          class="bg-white/50 p-5 md:p-6 rounded-2xl border border-[#8B4513]/5"
+    <!-- Description (Right) -->
+    <div class="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-between overflow-y-auto bg-[#FAF7F2]">
+      <div>
+        <div id="modal-category-badge" class="mb-4"></div>
+        <h3
+          id="modal-title"
+          class="font-display text-2xl md:text-4xl font-bold text-background-dark mb-6 leading-tight"
         >
-          <p
-            class="font-bold text-[10px] md:text-xs uppercase tracking-widest text-[#8B4513]/60 mb-2 md:mb-3"
-          >
-            Description
-          </p>
-          <p
-            id="modal-description"
-            class="text-sm md:text-base leading-relaxed opacity-90 font-light"
-          >
-          </p>
+        </h3>
+        
+        <div class="space-y-6">
+          <div class="border-b border-primary/10 pb-6">
+            <p class="text-[9px] uppercase tracking-widest text-primary/60 font-bold mb-2">Description</p>
+            <p
+              id="modal-description"
+              class="text-xs md:text-sm text-background-dark/80 leading-relaxed font-sans font-light"
+            ></p>
+          </div>
+          <div>
+            <p class="text-[9px] uppercase tracking-widest text-primary/60 font-bold mb-2">Dimensions</p>
+            <p id="modal-dimensions" class="text-sm md:text-base font-display text-background-dark font-semibold"></p>
+          </div>
         </div>
-        <div
-          class="bg-white/50 p-5 md:p-6 rounded-2xl border border-[#8B4513]/5"
+      </div>
+
+      <!-- Inquire CTA -->
+      <div class="mt-8 pt-6 border-t border-primary/10">
+        <a
+          id="modal-inquire-btn"
+          href="#"
+          target="_blank"
+          class="w-full text-center block bg-primary text-white py-4 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-primary/95 transition-colors"
         >
-          <p
-            class="font-bold text-[10px] md:text-xs uppercase tracking-widest text-[#8B4513]/60 mb-2 md:mb-3"
-          >
-            Dimensions
-          </p>
-          <p
-            id="modal-dimensions"
-            class="text-lg md:text-xl font-medium tracking-wide font-display text-[#8B4513]"
-          >
-          </p>
-        </div>
+          Send Inquiry via WhatsApp
+        </a>
       </div>
     </div>
   </div>
@@ -146,77 +166,37 @@ import { productCategories } from "../data/products";
 
 <script>
   import Swiper from "swiper";
-  import {
-    Navigation,
-    Pagination,
-    Autoplay,
-    Thumbs,
-    EffectFade,
-  } from "swiper/modules";
+  import { Navigation, Thumbs, EffectFade } from "swiper/modules";
   import "swiper/css";
   import "swiper/css/navigation";
-  import "swiper/css/pagination";
   import "swiper/css/thumbs";
   import "swiper/css/effect-fade";
 
-  function init() {
-    try {
-      // Main Product Slider
-      if (document.querySelector(".product-slider")) {
-        new Swiper(".product-slider", {
-          modules: [Navigation, Pagination, Autoplay],
-          loop: true,
-          spaceBetween: 20,
-          slidesPerView: 1,
-          autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-          },
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-          breakpoints: {
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 30,
-            },
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 30,
-            },
-          },
-        });
-      }
-    } catch (e) {
-      console.error("Swiper init error:", e);
-    }
+  function initProductShowcase() {
+    // --- 1. Product Items for Modal ---
+    const productItems = document.querySelectorAll(".product-card-item");
 
-    // Modal Logic
+    // --- 2. Modal Logic ---
     const modal = document.getElementById("product-modal");
     const modalContent = document.getElementById("modal-content");
     const modalBackdrop = document.getElementById("modal-backdrop");
     const modalClose = document.getElementById("modal-close");
-    const productItems = document.querySelectorAll(".product-item");
 
     const modalTitle = document.getElementById("modal-title");
+    const modalBadge = document.getElementById("modal-category-badge");
     const modalDesc = document.getElementById("modal-description");
     const modalDims = document.getElementById("modal-dimensions");
+    const modalInquire = document.getElementById("modal-inquire-btn");
     const galleryWrapper = document.getElementById("modal-gallery-wrapper");
     const thumbsWrapper = document.getElementById("modal-thumbs-wrapper");
 
-    let gallerySwiper = null;
-    let thumbsSwiper = null;
+    let gallerySwiper: any = null;
+    let thumbsSwiper: any = null;
 
     function openModal() {
       if (!modal) return;
       modal.classList.remove("hidden");
       modal.classList.add("flex");
-      // Trigger animation
       setTimeout(() => {
         modalContent?.classList.remove("scale-95", "opacity-0");
         modalContent?.classList.add("scale-100", "opacity-100");
@@ -244,59 +224,59 @@ import { productCategories } from "../data/products";
           if (!productData) return;
           const data = JSON.parse(productData);
 
-          // Populate Data with fallbacks
           const name = data.name || "Unnamed Product";
           const id = data.id || "N/A";
+          const category = data.category || "Collection";
+          const description = data.description || "Crafted with premium materials to ensure lasting comfort and timeless elegance for your space.";
+          const dimensions = data.dimensions || "Custom dimensions available upon request";
 
+          // Populate Texts
+          if (modalBadge) {
+            modalBadge.innerHTML = `<span class="inline-block border border-primary/20 text-primary px-3 py-1 text-[9px] font-bold tracking-[0.2em] uppercase bg-white">${category}</span>`;
+          }
           if (modalTitle) {
-            modalTitle.innerHTML = `<div class="flex items-center gap-3 mb-4">
-                              <span class="px-3 py-1 bg-[#8B4513]/10 text-[#8B4513] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] rounded-full">${data.category || "Collection"}</span>
-                              <span class="text-primary/40 text-sm md:text-base font-mono tracking-wider">[${id}]</span>
-                            </div>
-                            <span class="block text-[#8B4513] font-display text-3xl md:text-5xl font-bold leading-tight">${name}</span>`;
+            modalTitle.textContent = `${name}`;
           }
-
           if (modalDesc) {
-            modalDesc.textContent =
-              data.description ||
-              "Crafted with precision and premium materials to ensure lasting comfort and timeless elegance for your space. This piece reflects our 10 years of commitment to furniture excellence.";
+            modalDesc.textContent = description;
+          }
+          if (modalDims) {
+            modalDims.textContent = dimensions;
           }
 
-          if (modalDims) {
-            modalDims.textContent =
-              data.dimensions || "Custom dimensions available upon request";
+          // WhatsApp Inquiry Link
+          if (modalInquire) {
+            const message = `Hello Sorajati Dharma, I would like to inquire about this product:\n\nName: ${name}\nID: ${id}\nCategory: ${category}\nDimensions: ${dimensions}`;
+            modalInquire.setAttribute("href", `https://wa.me/81128507788?text=${encodeURIComponent(message)}`);
           }
 
           // Populate Images
-          const images =
-            data.detailImages && data.detailImages.length > 0
-              ? data.detailImages
-              : [data.img || "/images/logo-kjas.jpg"];
+          const images = data.detailImages && data.detailImages.length > 0 ? data.detailImages : [data.img || "/images/logo-kjas.svg"];
 
           if (galleryWrapper && thumbsWrapper) {
             galleryWrapper.innerHTML = images
               .map(
-                (src) =>
+                (src: string) =>
                   `<div class="swiper-slide bg-white flex items-center justify-center p-4 h-full"><img src="${src}" class="max-w-full max-h-full w-auto h-auto object-contain mx-auto" loading="lazy" /></div>`,
               )
               .join("");
 
             thumbsWrapper.innerHTML = images
               .map(
-                (src) =>
-                  `<div class="swiper-slide cursor-pointer border-2 border-transparent rounded-xl overflow-hidden transition-all hover:border-primary/50 bg-zinc-50 flex items-center justify-center h-full"><img src="${src}" class="w-full h-full object-cover" loading="lazy" /></div>`,
+                (src: string) =>
+                  `<div class="swiper-slide cursor-pointer border border-primary/10 overflow-hidden transition-all hover:border-primary flex items-center justify-center h-full bg-white"><img src="${src}" class="w-full h-full object-cover" loading="lazy" /></div>`,
               )
               .join("");
           }
 
-          // Destroy previous swipers if exists
+          // Destroy previous swipers
           gallerySwiper?.destroy?.();
           thumbsSwiper?.destroy?.();
 
           // Initialize Thumbs Swiper
           thumbsSwiper = new Swiper(".modal-thumbs", {
             modules: [Navigation, Thumbs],
-            spaceBetween: 10,
+            spaceBetween: 8,
             slidesPerView: 4,
             freeMode: true,
             watchSlidesProgress: true,
@@ -326,8 +306,9 @@ import { productCategories } from "../data/products";
     });
   }
 
-  // Run on initial load and navigation
-  document.addEventListener("astro:page-load", init);
+  // Bind events
+  document.addEventListener("DOMContentLoaded", initProductShowcase);
+  document.addEventListener("astro:page-load", initProductShowcase);
 </script>
 
 <style>
@@ -335,17 +316,22 @@ import { productCategories } from "../data/products";
   .swiper-button-prev::after {
     content: none !important;
   }
-  :global(.swiper-pagination-bullet-active) {
-    background-color: #0f5a38 !important;
-  }
   :global(.modal-thumbs .swiper-slide-thumb-active) {
-    border-color: #0f5a38 !important;
+    border-color: #173B21 !important;
     opacity: 1;
   }
   :global(.modal-thumbs .swiper-slide) {
-    opacity: 0.6;
+    opacity: 0.5;
   }
   :global(.modal-thumbs .swiper-slide:hover) {
     opacity: 1;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 </style>

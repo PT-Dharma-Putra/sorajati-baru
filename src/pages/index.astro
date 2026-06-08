@@ -3,27 +3,23 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
-import Service from "../components/Service.astro";
 import VisionMission from "../components/VisionMission.astro";
 import ProductShowcase from "../components/ProductShowcase.astro";
-import TrustReason from "../components/TrustReason.astro";
-import TrustFeatures from "../components/TrustFeatures.astro";
-import WorkProcess from "../components/WorkProcess.astro";
 import Project from "../components/Project.astro";
+import ArticlesSection from "../components/ArticlesSection.astro";
+import ScrollIndicator from "../components/ScrollIndicator.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="KJAS Furniture | Luxury Earthy Elegance">
+<Layout title="Sorajati Dharma Furniture | Luxury Earthy Elegance">
   <Navbar />
-  <main class="pt-20">
+  <ScrollIndicator />
+  <main>
     <div class="reveal">
       <Hero />
     </div>
     <div class="reveal section-padding">
       <About />
-    </div>
-    <div class="reveal section-padding">
-      <Service />
     </div>
     <div class="reveal section-padding">
       <VisionMission />
@@ -35,10 +31,7 @@ import Footer from "../components/Footer.astro";
       <Project />
     </div>
     <div class="reveal section-padding">
-      <WorkProcess />
-    </div>
-    <div class="reveal section-padding">
-      <TrustReason />
+      <ArticlesSection />
     </div>
   </main>
   <Footer />

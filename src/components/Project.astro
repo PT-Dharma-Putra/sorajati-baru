@@ -4,147 +4,91 @@ import { projects } from "../data/projects";
 
 <section
   id="project"
-  class="relative py-24 bg-zinc-900 text-white overflow-hidden"
+  class="relative py-32 bg-background-dark text-white overflow-hidden"
 >
-  <!-- Background Image with Overlay -->
-  <div class="absolute inset-0 z-0">
-    <img
-      src="/images/hero-bg.png"
-      alt="Background"
-      class="w-full h-full object-cover opacity-30 mix-blend-overlay"
-    />
-    <div
-      class="absolute inset-0 bg-gradient-to-b from-zinc-900/80 via-zinc-900/50 to-zinc-900"
-    >
-    </div>
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
+    <div class="hero-pattern w-full h-full"></div>
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2
-        class="font-display text-5xl md:text-6xl text-white font-normal uppercase tracking-wide mb-2"
-      >
-        Our<br /><span class="font-bold">Project KJAS</span>
-      </h2>
-      <!-- <h3 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">
-        KJAS
-      </h3> -->
-      <p class="font-serif italic text-xl text-white/80">
-        sofa, chair, table & bench
+    
+    <!-- Section Header -->
+    <div class="mb-20 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-white/10 pb-8">
+      <div>
+        <span class="text-secondary text-[10px] font-bold tracking-[0.3em] uppercase block mb-3">Portfolio</span>
+        <h2 class="font-display text-4xl md:text-6xl text-white leading-tight">
+          Contract <span class="font-serif italic text-secondary">Installations</span>
+        </h2>
+      </div>
+      <p class="font-sans text-xs uppercase tracking-widest text-white/50 max-w-xs text-left md:text-right leading-relaxed">
+        Custom furniture systems engineered for high-traffic environments, healthcare facilities, and luxury hospitality.
       </p>
     </div>
 
-    <div class="swiper project-slider !overflow-visible pb-12">
-      <div class="swiper-wrapper">
-        {
-          projects.map((project) => (
-            <div class="swiper-slide h-auto">
-              <a
-                href={`/project/${project.slug}`}
-                class="block group relative h-[500px] w-full overflow-hidden border-2 border-black/20 cursor-pointer"
-              >
-                <img
-                  src={project.img}
-                  alt={project.name}
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div class="absolute bottom-0 left-0 w-full p-8 flex justify-between items-end">
-                  <h4 class="font-display text-2xl font-bold leading-tight uppercase w-2/3">
-                    {project.name}
-                  </h4>
-                  <div class="w-10 h-10 rounded-full border border-white flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors">
-                    <span class="material-icons-outlined text-sm">
-                      arrow_forward
-                    </span>
-                  </div>
-                </div>
-              </a>
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        projects.map((project) => (
+          <a
+            href={`/project/${project.slug}`}
+            class="group block bg-background-dark border border-white/10 hover:border-secondary/35 transition-all duration-500 overflow-hidden shadow-sm"
+          >
+            <!-- Project Thumbnail -->
+            <div class="aspect-[4/3] w-full overflow-hidden bg-white/5 relative">
+              <img
+                src={project.img}
+                alt={project.name}
+                class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-background-dark/25 group-hover:bg-background-dark/10 transition-colors duration-500" />
             </div>
-          ))
-        }
-      </div>
 
-      <!-- Navigation Buttons -->
-      <div
-        class="swiper-button-prev !left-4 !md:-left-12 !text-white bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-full hover:bg-white hover:text-zinc-900 transition-all shadow-2xl flex items-center justify-center group pointer-events-auto"
-      >
-        <span
-          class="material-icons-outlined !text-3xl group-hover:scale-110 transition-transform"
-          >keyboard_arrow_left</span
-        >
-      </div>
-      <div
-        class="swiper-button-next !right-4 !md:-right-12 !text-white bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-full hover:bg-white hover:text-zinc-900 transition-all shadow-2xl flex items-center justify-center group pointer-events-auto"
-      >
-        <span
-          class="material-icons-outlined !text-3xl group-hover:scale-110 transition-transform"
-          >keyboard_arrow_right</span
-        >
-      </div>
+            <!-- Project Info -->
+            <div class="p-8 flex flex-col justify-between h-[220px]">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-secondary text-[9px] font-bold tracking-widest uppercase">
+                    {project.client}
+                  </span>
+                  <span class="text-white/40 text-[10px] font-mono">
+                    {project.year}
+                  </span>
+                </div>
+                <h3 class="font-display text-xl font-bold tracking-wide text-white group-hover:text-secondary transition-colors mb-3">
+                  {project.name}
+                </h3>
+                <p class="text-white/60 text-xs line-clamp-2 leading-relaxed font-sans font-light">
+                  {project.description}
+                </p>
+              </div>
+
+              <!-- Button CTA -->
+              <div class="flex items-center gap-2 text-secondary text-[9px] font-bold uppercase tracking-[0.2em] group-hover:gap-4 transition-all">
+                <span>View Details</span>
+                <span class="material-icons-outlined text-xs">east</span>
+              </div>
+            </div>
+          </a>
+        ))
+      }
     </div>
 
-    <div class="text-center mt-12 max-w-3xl mx-auto">
-      <p class="text-lg md:text-xl font-light leading-relaxed text-white/90">
-        Percayakan kebutuhan furnitur Anda kepada ahlinya. Lihat portofolio kami
-        dan temukan kualitas terbaik furnitur kustom untuk hotel, klinik, dan
-        lainnya.
-      </p>
+    <!-- Bottom Banner Info -->
+    <div class="mt-24 py-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="max-w-xl text-center md:text-left">
+        <h4 class="font-display text-xl font-bold text-white mb-2">Need custom solutions for your space?</h4>
+        <p class="text-white/60 text-xs leading-relaxed font-sans font-light">
+          We collaborate with architects, interior designers, and commercial stakeholders to manufacture standardized or custom wood furnishings at contract scale.
+        </p>
+      </div>
+      <a
+        href="https://wa.me/81127005688"
+        class="bg-secondary text-background-dark px-10 py-4 text-[10px] font-bold uppercase tracking-[0.25em] hover:bg-secondary/90 transition-all font-sans"
+      >
+        Inquire Now
+      </a>
     </div>
   </div>
 </section>
-
-<script>
-  import Swiper from "swiper";
-  import { Navigation, Autoplay } from "swiper/modules";
-  import "swiper/css";
-  import "swiper/css/navigation";
-
-  const initSwiper = () => {
-    new Swiper(".project-slider", {
-      modules: [Navigation, Autoplay],
-      loop: true,
-      centeredSlides: true,
-      slidesPerView: 1,
-      spaceBetween: 20,
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-      },
-      navigation: {
-        nextEl: ".project-slider .swiper-button-next",
-        prevEl: ".project-slider .swiper-button-prev",
-      },
-      breakpoints: {
-        640: {
-          slidesPerView: 2.2,
-          spaceBetween: 30,
-          centeredSlides: false,
-        },
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 40,
-          centeredSlides: false,
-        },
-      },
-    });
-  };
-
-  document.addEventListener("astro:page-load", initSwiper);
-  // Initial call just in case
-  initSwiper();
-</script>
-
-<style>
-  .swiper-button-next::after,
-  .swiper-button-prev::after {
-    display: none !important;
-  }
-
-  @media (max-width: 768px) {
-    .swiper-button-next,
-    .swiper-button-prev {
-      display: none !important;
-    }
-  }
-</style>

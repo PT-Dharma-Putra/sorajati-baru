@@ -1,82 +1,72 @@
-<section id="/" class="relative py-16 overflow-hidden bg-zinc-50">
-  <div class="absolute inset-0 z-0">
-    <!-- <img
-      alt="Consultant"
-      class="w-full h-full object-cover grayscale opacity-10 scale-110"
-      src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3w0-RoRv2pFwGx-9w7gqNOcjRF0xBiXw3E8KdJLJDIYuoi-be2wV7WO83JyaoMsNeTCnC7fGeUMUanLb-29laiG1NeGhs-9ZWhUqCU7ExGe5NzE_882s_wzosIW2-JipcpOHT9jrcbIhF8t5Qi48uVh182VTj1ttej2Ri1jCkXK2tCjWzymnwXUkRK4LUCcMaKdEsv3qExP0fd3zf4fSwa_nClV6V9tESLi66OzLVLgGvO1yKavWIpRjhCFyTOvI1PoxQ9pXSTest"
-    /> -->
-    <div
-      class="absolute inset-0 bg-gradient-to-r from-background-light/80 via-background-light/50 to-transparent"
-    >
-    </div>
-  </div>
+<section id="trust" class="relative py-32 overflow-hidden bg-[#FAF7F2]">
   <div
-    class="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16"
+    class="relative z-10 max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16 lg:gap-24"
   >
-    <div class="flex-1 space-y-8">
-      <div class="mb-12">
+    <!-- Left Column: Accordion Details -->
+    <div class="flex-1 space-y-10 w-full">
+      <div>
+        <span class="text-primary text-[10px] font-bold tracking-[0.3em] uppercase block mb-3">Guarantees</span>
         <h2
-          class="font-display text-5xl md:text-6xl text-primary font-bold leading-tight"
+          class="font-display text-4xl md:text-5xl text-background-dark leading-tight"
         >
-          Why Trust<br /><span class="italic text-slate-800">Our Company?</span>
+          Why Choose <span class="font-serif italic text-primary">Sorajati Dharma Furniture</span>?
         </h2>
-        <div class="h-1.5 w-24 bg-primary mt-4 rounded-full"></div>
       </div>
-      <div class="space-y-4 max-w-lg">
+
+      <div class="space-y-4 max-w-xl">
         {
           [
             {
               icon: "verified",
               title: "Guaranteed Product Quality",
               items: [
-                "Using a strong frame (selected wood/steel) that will last for years.",
-                "Soft foam that doesn't deflate easily and is comfortable.",
-                "Neat and detailed finishing done to a high standard.",
-              ],
+                "Utilizing seasoned, premium teak and wadang wood ensuring lifetime stability.",
+                "High-density royal foam (D26, D32) that holds resilience and shape for years.",
+                "Flawless joinery, double-dowel reinforcing, and premium PU duco finishes."
+              ]
             },
             {
               icon: "local_shipping",
-              title: "On-Time Delivery",
+              title: "Committed Delivery & Deadlines",
               items: [
-                "Well-scheduled production process with clear communication.",
-                "Commitment to delivery deadlines.",
-              ],
+                "Strict scheduling and progress reporting from the Sleman factory.",
+                "Direct communication on timelines to respect your project schedules."
+              ]
             },
             {
               icon: "factory",
-              title: "Direct Production",
+              title: "Direct Production Pricing",
               items: [
-                "No intermediaries, more competitive prices.",
-                "Stricter quality control processes in-factory.",
-                "Can directly adapt to customer needs.",
-              ],
+                "No intermediate broker fees, offering direct factory competitive rates.",
+                "Tighter in-house quality control and adaptable bespoke requests."
+              ]
             },
             {
               icon: "design_services",
-              title: "Customizable",
+              title: "Bespoke Adaptability",
               items: [
-                "Size, color, material, and design can be customized.",
-                "Suitable for homes, apartments, hotels, cafes, and offices.",
-              ],
-            },
+                "Total customization of size dimensions, colors, wood species, and fabrics.",
+                "Engineered to blend with hotels, clinics, cafes, or executive spaces."
+              ]
+            }
           ].map((item, index) => (
-            <div class="bg-primary text-white p-6 rounded-2xl shadow-lg cursor-pointer group hover:bg-primary/90 transition-all duration-300 accordion-item">
+            <div class="bg-white border border-primary/10 text-background-dark p-6 cursor-pointer hover:border-primary/30 transition-all duration-300 accordion-item">
               <div class="flex items-center justify-between pointer-events-none">
                 <div class="flex items-center gap-5">
-                  <div class="shrink-0">
-                    <span class="material-icons-outlined text-4xl group-hover:scale-110 transition-transform duration-300">
+                  <div class="shrink-0 text-primary">
+                    <span class="material-icons-outlined text-3xl">
                       {item.icon}
                     </span>
                   </div>
-                  <p class="font-bold text-lg select-none">{item.title}</p>
+                  <p class="font-display font-bold text-base text-background-dark tracking-wide">{item.title}</p>
                 </div>
-                <span class="material-icons-outlined transform transition-transform duration-300 accordion-icon">
+                <span class="material-icons-outlined text-primary/60 transform transition-transform duration-300 accordion-icon">
                   expand_more
                 </span>
               </div>
               <div class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out accordion-content pointer-events-none">
                 <div class="overflow-hidden">
-                  <ul class="text-xs text-primary-100/90 space-y-1.5 list-disc pl-16 pt-4 marker:text-white/50 leading-relaxed">
+                  <ul class="text-xs text-background-dark/75 space-y-2 list-disc pl-14 pt-4 marker:text-primary/45 leading-relaxed font-sans font-light">
                     {item.items.map((listItem) => (
                       <li>{listItem}</li>
                     ))}
@@ -92,84 +82,79 @@
         document.addEventListener("astro:page-load", () => {
           setupAccordion();
         });
+        document.addEventListener("DOMContentLoaded", () => {
+          setupAccordion();
+        });
 
         function setupAccordion() {
           const items = document.querySelectorAll(".accordion-item");
 
           items.forEach((item) => {
-            // Remove existing listener to be safe (idempotency)
+            // Remove existing listener to be safe
             const newItem = item.cloneNode(true);
-            item.parentNode.replaceChild(newItem, item);
+            if (item.parentNode) {
+              item.parentNode.replaceChild(newItem, item);
+            }
 
             newItem.addEventListener("click", () => {
-              // Close other items
               const allItems = document.querySelectorAll(".accordion-item");
               allItems.forEach((otherItem) => {
                 if (otherItem !== newItem) {
-                  otherItem.classList.remove("active");
-                  otherItem
-                    .querySelector(".accordion-content")
-                    .classList.remove("grid-rows-[1fr]");
-                  otherItem
-                    .querySelector(".accordion-content")
-                    .classList.add("grid-rows-[0fr]");
-                  otherItem
-                    .querySelector(".accordion-icon")
-                    .classList.remove("rotate-180");
+                  otherItem.classList.remove("active", "border-primary");
+                  otherItem.classList.add("border-primary/10");
+                  const content = otherItem.querySelector(".accordion-content");
+                  if (content) {
+                    content.classList.remove("grid-rows-[1fr]");
+                    content.classList.add("grid-rows-[0fr]");
+                  }
+                  const icon = otherItem.querySelector(".accordion-icon");
+                  if (icon) {
+                    icon.classList.remove("rotate-180");
+                  }
                 }
               });
 
-              // Toggle current item
               const content = newItem.querySelector(".accordion-content");
               const icon = newItem.querySelector(".accordion-icon");
 
-              if (newItem.classList.contains("active")) {
-                newItem.classList.remove("active");
-                content.classList.remove("grid-rows-[1fr]");
-                content.classList.add("grid-rows-[0fr]");
-                icon.classList.remove("rotate-180");
-              } else {
-                newItem.classList.add("active");
-                content.classList.remove("grid-rows-[0fr]");
-                content.classList.add("grid-rows-[1fr]");
-                icon.classList.add("rotate-180");
+              if (newItem instanceof HTMLElement) {
+                if (newItem.classList.contains("active")) {
+                  newItem.classList.remove("active", "border-primary");
+                  newItem.classList.add("border-primary/10");
+                  content?.classList.remove("grid-rows-[1fr]");
+                  content?.classList.add("grid-rows-[0fr]");
+                  icon?.classList.remove("rotate-180");
+                } else {
+                  newItem.classList.add("active", "border-primary");
+                  newItem.classList.remove("border-primary/10");
+                  content?.classList.remove("grid-rows-[0fr]");
+                  content?.classList.add("grid-rows-[1fr]");
+                  icon?.classList.add("rotate-180");
+                }
               }
             });
           });
         }
       </script>
     </div>
-    <div class="flex-1 block relative group mt-12 md:mt-0">
+
+    <!-- Right Column: Asymmetric Editorial Image -->
+    <div class="flex-1 w-full lg:w-1/2 relative flex items-stretch">
       <div
-        class="absolute -top-12 -right-12 w-full h-full bg-primary/5 rounded-3xl -z-10 transform rotate-6 transition-transform group-hover:rotate-3 duration-700"
+        class="relative w-full h-[450px] lg:h-auto min-h-[500px] overflow-hidden border border-primary/10 bg-white p-4 shadow-sm"
       >
+        <img
+          src="/trust_image.png"
+          alt="Trust Us for Contract Manufacturing"
+          class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+          loading="lazy"
+        />
+        <!-- Floating highlight badge -->
+        <div class="absolute top-8 right-8 bg-[#1E1815] text-[#FAF7F2] py-4 px-6 border border-primary/15">
+          <p class="text-[9px] font-bold tracking-[0.2em] uppercase">100% INDONESIAN</p>
+          <p class="font-serif italic text-xs text-secondary mt-0.5">Woodcraft Quality</p>
+        </div>
       </div>
-      <img
-        src="/trust_image.png"
-        alt="Trust Us"
-        class="w-full max-w-lg mx-auto h-[500px] object-cover rounded-2xl shadow-xl transform -rotate-2 hover:rotate-3 hover:scale-105 transition-all duration-500 ease-in-out hover:animate-wiggle"
-      />
     </div>
   </div>
 </section>
-
-<style>
-  @keyframes wiggle {
-    0%,
-    100% {
-      transform: rotate(-2deg);
-    }
-    25% {
-      transform: rotate(2deg);
-    }
-    50% {
-      transform: rotate(-2deg);
-    }
-    75% {
-      transform: rotate(2deg);
-    }
-  }
-  .hover\:animate-wiggle:hover {
-    animation: wiggle 0.5s ease-in-out infinite;
-  }
-</style>

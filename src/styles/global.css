@@ -11,14 +11,14 @@
     transform: translateX(-50%);
     width: 2px;
     height: 20px;
-    background: #8b572a33;
+    background: rgba(23, 59, 33, 0.2);
   }
   .timeline-capsule:last-child::after {
     display: none;
   }
 
   .hero-pattern {
-    background-image: radial-gradient(#8b572a 0.5px, transparent 0.5px);
+    background-image: radial-gradient(#173B21 0.5px, transparent 0.5px);
     background-size: 24px 24px;
     opacity: 0.1;
   }
@@ -32,7 +32,7 @@
   }
 
   .text-gradient-primary {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#8B4513];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
   }
 
   .section-padding {
@@ -42,6 +42,6 @@
 
 /* Custom Selection Color */
 ::selection {
-  background: rgba(15, 90, 56, 0.2);
-  color: #0f5a38;
+  background: rgba(23, 59, 33, 0.2);
+  color: #173B21;
 }

@@ -1,14 +1,14 @@
 export const projects = [
     {
-        slug: "aston-kemayoran",
-        name: "Aston Kemayoran",
+        slug: "kammora-living",
+        name: "Kammora Living",
         img: "/images/projects/Aston_Kemayoran/Aston-kemayoran.jpeg",
         images: [
             "/images/projects/Aston_Kemayoran/Aston-kemayoran.jpeg",
             "/images/projects/Aston_Kemayoran/Aston-kemayoran2.jpeg",
             "/images/projects/Aston_Kemayoran/Aston-kemayoran3.jpeg"
         ],
-        client: "ASTON KEMAYORAN",
+        client: "KAMMORA LIVING",
         year: "2025",
         started: "05/2025",
         finished: "06/2025",
@@ -21,8 +21,8 @@ export const projects = [
         ]
     },
     {
-        slug: "hermina-ikn",
-        name: "Hermina IKN",
+        slug: "luminor-hotel",
+        name: "Luminor Hotel",
         img: "/images/projects/Hermina_ikn/Hermina-ikn.jpg",
         images: [
             "/images/projects/Hermina_ikn/Hermina-ikn.jpg",
@@ -30,7 +30,7 @@ export const projects = [
             "/images/projects/Hermina_ikn/Hermina-ikn3.jpg",
             "/images/projects/Hermina_ikn/Hermina-ikn4.jpg"
         ],
-        client: "HERMINA IKN",
+        client: "LUMINOR HOTEL",
         year: "2024",
         description: "The interior design features a modern-elegant concept that blends luxury with comfort. The lounge area is arranged with a circular sofa configuration, creating a warm, welcoming, and interactive atmosphere ideal for waiting areas or public spaces.",
         furniture: [
@@ -41,8 +41,8 @@ export const projects = [
         ]
     },
     {
-        slug: "hermina-pik-2",
-        name: "HERMINA PIK 2",
+        slug: "eastern-kopi-tm",
+        name: "Eastern Kopi TM",
         img: "/images/projects/Hermina_Pik/Hermina-pik.jpeg",
         images: [
             "/images/projects/Hermina_Pik/Hermina-pik.jpeg",
@@ -50,7 +50,7 @@ export const projects = [
             "/images/projects/Hermina_Pik/Hermina-pik3.jpeg",
             "/images/projects/Hermina_Pik/Hermina-pik4.jpeg"
         ],
-        client: "HERMINA PIK 2",
+        client: "EASTERN KOPI TM",
         year: "2024",
         description: "The interior features a modern luxury concept with a warm and elegant ambiance. The wood-slat ceiling with golden indirect lighting, combined with wood-paneled walls and marble accents, creates a sophisticated impression. Ergonomic chairs with plush cushioning paired with marble-top tables and metal legs provide maximum comfort while enhancing the aesthetic of the waiting area.",
         furniture: [
@@ -62,15 +62,15 @@ export const projects = [
         ]
     },
     {
-        slug: "hermina-badung-bali",
-        name: "Hermina Badung Bali",
+        slug: "bloody-mary-resort",
+        name: "Bloody Mary Resort",
         img: "/images/projects/Hermina_badung_bali/Hermina-badung-bali.jpeg",
         images: [
             "/images/projects/Hermina_badung_bali/Hermina-badung-bali.jpeg",
             "/images/projects/Hermina_badung_bali/Hermina-badung-bali2.jpeg",
             "/images/projects/Hermina_badung_bali/Hermina-badung-bali3.jpeg"
         ],
-        client: "HERMINA BADUNG BALI",
+        client: "BLOODY MARY RESORT",
         year: "2025-2026",
         description: "The interior design of this room embraces a clean and functional modern minimalist concept, perfectly suited for healthcare facilities. The dominance of bright tones on the floors and walls creates a spacious, organized, and hygienic feel. Wood-patterned flooring accents add a touch of warmth, preventing the space from feeling too clinical. The deep green sofas serve as a focal point, providing a fresh and calming atmosphere. Their simple, neatly arranged design with plush cushioning ensures comfort during wait times.",
         furniture: [
@@ -82,8 +82,8 @@ export const projects = [
         ]
     },
     {
-        slug: "ambarukma-plaza",
-        name: "Ambarukma Plaza",
+        slug: "punika-deli",
+        name: "Punika Deli",
         img: "/images/projects/Amplaz/Amplaz.jpeg",
         images: [
             "/images/projects/Amplaz/Amplaz.jpeg",
@@ -93,7 +93,7 @@ export const projects = [
             "/images/projects/Amplaz/Amplaz5.jpeg",
             "/images/projects/Amplaz/Amplaz6.jpeg"
         ],
-        client: "AMBARUKMA PLAZA",
+        client: "PUNIKA DELI",
         year: "2025",
         description: "The sofa design is a typical example of modular public seating commonly found in commercial areas such as malls or airports. It is highly functional and specifically engineered to accommodate high-traffic environments. The elongated configuration with a central backrest allows users to sit on both sides efficiently, maximizing spatial capacity. Additionally, it features integrated power outlets built into the sofa body, providing convenient charging stations for electronic devices.",
         furniture: [
