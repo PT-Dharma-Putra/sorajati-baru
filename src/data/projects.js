@@ -27,19 +27,19 @@ export const projects = [
         ]
     },
     {
-        slug: "rs-provita",
-        name: "RS Provita",
+        slug: "provita-hospital",
+        name: "Provita Hospital",
         img: "/images/projects/2. RS PROVITA/RS PROVITA 1.PNG",
         images: [
             "/images/projects/2. RS PROVITA/RS PROVITA 1.PNG",
             "/images/projects/2. RS PROVITA/RS PROVITA 2.PNG",
             "/images/projects/2. RS PROVITA/RS PROVITA 3.PNG"
         ],
-        client: "RS PROVITA",
+        client: "PROVITA HOSPITAL",
         year: "2024",
         category: "Healthcare",
         location: "Jayapura, Papua",
-        description: "Modern interior and specialized furniture installations for RS Provita. Designed with hygiene, comfort, and durability in mind to support patients and healthcare professionals alike, creating a warm and welcoming clinical environment.",
+        description: "Modern interior and specialized furniture installations for Provita Hospital. Designed with hygiene, comfort, and durability in mind to support patients and healthcare professionals alike, creating a warm and welcoming clinical environment.",
         furniture: [
             "LOBBY SOFAS",
             "RECEPTION SEATING",
