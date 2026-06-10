@@ -63,6 +63,7 @@ export const productCategories = [
         "category": "Table",
         "description": "Premium handcrafted buwana wastafel credenza designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (top)\nTeak Wood (legs)\n80 (L) x 50 (W) x 82 (H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/BuwanaWastafelCredenza.png"
         ]
@@ -75,8 +76,12 @@ export const productCategories = [
         "category": "Table",
         "description": "Premium handcrafted dhira coffee table designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (top)\nTeak Wood (legs)\n60 (L) x 57 (W) x 46 (H) cm\n80 (L) x 77 (W) x 46 (H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
-          "/images/konten/DhiraCoffeTable.png"
+          "/images/konten/DhiraCoffeTable.png",
+          "/images/konten/Detail data/DhiraCoffeTable/1.png",
+          "/images/konten/Detail data/DhiraCoffeTable/5.png",
+          "/images/konten/Detail data/DhiraCoffeTable/6.png"
         ]
       },
       {
@@ -159,6 +164,7 @@ export const productCategories = [
         "category": "Table",
         "description": "Premium handcrafted yogamaya bed side table designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (top)\nTeak Wood (legs)\n40(L) x 40 (W) x 50 (H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/YogamayaBedSideTable.png"
         ]
@@ -171,6 +177,7 @@ export const productCategories = [
         "category": "Table",
         "description": "Premium handcrafted mandiratablelamp designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (top)\nTeak Wood (leg)\n35 (L) x 35 (W) x 50 (H) cm\n36 (L) x 36 (W) x 18 (H) cm (KD)",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/mandiratablelamp.png"
         ]
@@ -241,8 +248,11 @@ export const productCategories = [
         "category": "Chair",
         "description": "Premium handcrafted larasmaya stool designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (top)\nTeak Wood (legs)\n38(L) x 35 (W) x 46 (H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
-          "/images/konten/LarasmayaStool.png"
+          "/images/konten/LarasmayaStool.png",
+          "/images/konten/Detail data/LarasmayaStool/1.png",
+          "/images/konten/Detail data/LarasmayaStool/5.png"
         ]
       },
       {
@@ -253,8 +263,12 @@ export const productCategories = [
         "category": "Chair",
         "description": "Premium handcrafted ranaswara stool designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (top)\nTeak Wood (legs)\n38(L) x 35 (W) x 46 (H) cm\n45(L) x 42 (W) x 46 (H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
-          "/images/konten/RanaswaraStool.png"
+          "/images/konten/RanaswaraStool.png",
+          "/images/konten/Detail data/RanaswaraStool/1.png",
+          "/images/konten/Detail data/RanaswaraStool/5.png",
+          "/images/konten/Detail data/RanaswaraStool/6.png"
         ]
       },
       {
@@ -277,6 +291,7 @@ export const productCategories = [
         "category": "Chair",
         "description": "Premium handcrafted swarma square stool designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (top)\nTeak Wood (legs)\n50 (L) x 35 (W) x 45(H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/SwarmaSquareStool.png"
         ]
@@ -301,6 +316,7 @@ export const productCategories = [
         "category": "Chair",
         "description": "Premium handcrafted dharmastoolb designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (top)\nTeak Wood (legs)\n57(L) x 60 (W) x 40 (H) cm\n47(L) x 50 (W) x 35 (H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/dharmastoolb.png"
         ]
@@ -354,6 +370,7 @@ export const productCategories = [
         "category": "Accessories",
         "description": "Premium handcrafted klanawoodenplanter a designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Recycle Teak Wood (basket)\nTeak Wood (legs)\n34 (L) x 30(W) x 50(H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/KlanawoodenplanterA.png"
         ]
@@ -366,6 +383,7 @@ export const productCategories = [
         "category": "Accessories",
         "description": "Premium handcrafted klanawoodenplanter b designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Recycle Teak Wood (basket)\nTeak Wood (legs)\n34 (L) x 30(W) x 50(H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/KlanawoodenplanterB.png"
         ]
@@ -378,8 +396,12 @@ export const productCategories = [
         "category": "Accessories",
         "description": "Premium handcrafted pandira console designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (top)\nTeak Wood (legs)\n120(L) x 40 (W) x 80 (H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
-          "/images/konten/PandiraConsole.png"
+          "/images/konten/PandiraConsole.png",
+          "/images/konten/Detail data/PandiraConsole/1.png",
+          "/images/konten/Detail data/PandiraConsole/5.png",
+          "/images/konten/Detail data/PandiraConsole/6.png"
         ]
       },
       {
@@ -414,6 +436,7 @@ export const productCategories = [
         "category": "Accessories",
         "description": "Premium handcrafted sahita small planter designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (top)\nTeak Wood (legs)\n32 (L) x 32 (W) x 40 (H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/SahitaSmallPlanter.png"
         ]
@@ -426,6 +449,7 @@ export const productCategories = [
         "category": "Accessories",
         "description": "Premium handcrafted sanitawallmirror120 designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Teak Wood (frame)\n120 (L) x 4 (W) x 60 (H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/Sanitawallmirror120.png"
         ]
@@ -450,6 +474,7 @@ export const productCategories = [
         "category": "Accessories",
         "description": "Premium handcrafted swargaawoodentotem1460 designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Teak Wood\n25 (L) x 25 (W) x 146 (H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/Swargaawoodentotem1460.png"
         ]
@@ -462,6 +487,7 @@ export const productCategories = [
         "category": "Accessories",
         "description": "Premium handcrafted swargaawoodentotem1680 designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Teak Wood\n25 (L) x 25 (W) x 148 (H) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/Swargaawoodentotem1680.png"
         ]
@@ -474,6 +500,7 @@ export const productCategories = [
         "category": "Accessories",
         "description": "Premium handcrafted wall mirror45 designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Teak Wood (leaf)\n 45  cm (DIA)",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/WallMirror45.png"
         ]
@@ -486,6 +513,7 @@ export const productCategories = [
         "category": "Accessories",
         "description": "Premium handcrafted wall mirror65 designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (leaf)\nTeak Wood (frame)\n65  cm (DIA)",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/WallMirror65.png"
         ]
@@ -498,6 +526,7 @@ export const productCategories = [
         "category": "Accessories",
         "description": "Premium handcrafted mandraatotem150 designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "-",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/mandraatotem150.png"
         ]
@@ -510,6 +539,7 @@ export const productCategories = [
         "category": "Accessories",
         "description": "Premium handcrafted samarastandinglampp designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (leaf & base)\n Teak Wood (leg)\n45 (L) x 40 (W) x 150 (L) cm",
+        "finishes": ["#3e3c39", "#5c4d43", "#8b8c82", "#b68f5b", "#783c24"],
         "detailImages": [
           "/images/konten/samarastandinglampp.png"
         ]
@@ -525,10 +555,10 @@ export const productCategories = [
         "id": "014",
         "code": "SLS - TKMN - 01",
         "category": "Sofa",
-        "description": "Premium handcrafted kayindra double lounge sofa designed for luxury comfort, stability, and high-end aesthetics.",
+        "description": "Premium handcrafted kayindra single lounge sofa designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (arm rest)\nTeak Wood (legs)\n68 (L) x 70 (W) x 80 (H) cm",
         "detailImages": [
-          "/images/konten/KayindraDoubleLoungeSofa.png"
+          "/images/konten/KayindraSingleLoungeSofa.png"
         ]
       },
       {
@@ -537,10 +567,10 @@ export const productCategories = [
         "id": "015",
         "code": "SLS - TKMN - 01",
         "category": "Sofa",
-        "description": "Premium handcrafted kayindra single lounge sofa designed for luxury comfort, stability, and high-end aesthetics.",
+        "description": "Premium handcrafted kayindra double lounge sofa designed for luxury comfort, stability, and high-end aesthetics.",
         "dimensions": "Mindi Wood (arm rest)\nTeak Wood (legs)\n68 (L) x 70 (W) x 80 (H) cm",
         "detailImages": [
-          "/images/konten/KayindraSingleLoungeSofa.png"
+          "/images/konten/KayindraDoubleLoungeSofa.png"
         ]
       },
       {

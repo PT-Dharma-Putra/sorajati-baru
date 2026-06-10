@@ -146,6 +146,10 @@ const filterCategories = ["ALL", "Chair", "Sofa", "Table", "Bench", "Accessories
             <p class="text-[9px] uppercase tracking-widest text-primary/60 font-bold mb-2">Dimensions</p>
             <p id="modal-dimensions" class="text-sm md:text-base font-display text-background-dark font-semibold"></p>
           </div>
+          <div id="modal-finishes-section" class="border-t border-primary/10 pt-6">
+            <p class="text-[9px] uppercase tracking-widest text-primary/60 font-bold mb-2">Available in</p>
+            <div id="modal-finishes-wrapper" class="flex flex-wrap gap-2.5"></div>
+          </div>
         </div>
       </div>
 
@@ -189,6 +193,8 @@ const filterCategories = ["ALL", "Chair", "Sofa", "Table", "Bench", "Accessories
     const modalInquire = document.getElementById("modal-inquire-btn");
     const galleryWrapper = document.getElementById("modal-gallery-wrapper");
     const thumbsWrapper = document.getElementById("modal-thumbs-wrapper");
+    const modalFinishesSection = document.getElementById("modal-finishes-section");
+    const modalFinishesWrapper = document.getElementById("modal-finishes-wrapper");
 
     let gallerySwiper: any = null;
     let thumbsSwiper: any = null;
@@ -242,6 +248,22 @@ const filterCategories = ["ALL", "Chair", "Sofa", "Table", "Bench", "Accessories
           }
           if (modalDims) {
             modalDims.textContent = dimensions;
+          }
+
+          // Render finishes if available
+          if (modalFinishesSection && modalFinishesWrapper) {
+            if (data.finishes && data.finishes.length > 0) {
+              modalFinishesSection.style.display = "block";
+              modalFinishesWrapper.innerHTML = "";
+              data.finishes.forEach((color) => {
+                const swatch = document.createElement("div");
+                swatch.className = "w-10 h-10 border border-[#4A3B32]/15 hover:scale-105 transition-transform cursor-pointer";
+                swatch.style.backgroundColor = color;
+                modalFinishesWrapper.appendChild(swatch);
+              });
+            } else {
+              modalFinishesSection.style.display = "none";
+            }
           }
 
           // WhatsApp Inquiry Link
