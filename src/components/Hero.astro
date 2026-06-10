@@ -26,22 +26,13 @@
       <div
         class="swiper-slide relative h-full w-full flex items-center justify-center"
       >
-        <div class="absolute inset-0">
-          <video
-            autoplay
-            loop
-            muted
-            playsinline
-            poster="/images/hero-bg.png"
-            class="w-full h-full object-cover scale-100 filter brightness-[0.8]"
-          >
-            <source src="/images/konten/3).%20Sorajati%20Video.mp4" type="video/mp4" />
-            <img
-              alt="Luxury Interior wood furniture"
-              class="w-full h-full object-cover scale-100 filter brightness-[0.8]"
-              src="/images/hero-bg.png"
-            />
-          </video>
+        <div class="absolute inset-0 overflow-hidden">
+          <iframe
+            src="https://www.youtube.com/embed/Vq3joj1hbk0?autoplay=1&mute=1&loop=1&playlist=Vq3joj1hbk0&controls=0&showinfo=0&rel=0&iv_load_policy=3&start=58&playsinline=1"
+            class="youtube-background filter brightness-[0.7]"
+            allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
+            frameborder="0"
+          ></iframe>
           <div
             class="absolute inset-0 bg-gradient-to-b from-background-dark/25 via-background-dark/45 to-background-dark/20"
           >
@@ -49,7 +40,7 @@
         </div>
 
         <div
-          class="relative z-10 w-full max-w-5xl px-6 text-center mt-12 hero-slide-content"
+          class="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 text-left mt-12 hero-slide-content flex flex-col items-start"
         >
           <div
             class="inline-flex items-center gap-2 px-4 py-1.5 border border-secondary/30 bg-background-dark/40 backdrop-blur-md mb-8"
@@ -63,34 +54,33 @@
           </div>
 
           <h1
-            class="font-display text-4xl md:text-8xl text-white mb-8 leading-[1.1] tracking-tight"
+            class="font-display text-4xl md:text-8xl text-white mb-8 leading-[1.1] tracking-tight text-left"
           >
-            Javanese <span class="font-serif italic text-secondary">Java</span
-            >,<br />
+            Javanese <span class="font-serif italic text-secondary">Java</span>,<br />
             Contemporary <span class="font-serif italic text-secondary"
               >Abode</span
             >
           </h1>
 
           <p
-            class="text-sm md:text-lg text-white/80 mb-12 max-w-2xl mx-auto font-sans leading-relaxed tracking-wide font-light"
+            class="text-sm md:text-lg text-white/80 mb-12 max-w-2xl text-left font-sans leading-relaxed tracking-wide font-light"
           >
             A subtle and simple reflection of Javanese wood culture
           </p>
 
           <div
-            class="flex flex-col sm:flex-row items-center justify-center gap-4"
+            class="flex flex-col sm:flex-row items-stretch sm:items-start justify-start gap-4 w-full sm:w-auto"
           >
             <a
               href="#project"
-              class="w-full sm:w-auto px-10 py-4 bg-primary text-white font-bold text-[10px] uppercase tracking-[0.25em] hover:bg-primary/95 transition-all shadow-md"
+              class="w-full sm:w-auto px-10 py-4 bg-primary text-white font-bold text-[10px] uppercase tracking-[0.25em] hover:bg-primary/95 transition-all shadow-md text-center"
             >
               Explore Projects
             </a>
             <a
               href="https://wa.me/81128507788?text=Hello%20Sorajati%20Dharma,%20I'd%20like%20to%20inquire%20about%20your%20woodcraft%20collection."
               target="_blank"
-              class="w-full sm:w-auto px-10 py-4 border border-white/20 text-white font-bold text-[10px] uppercase tracking-[0.25em] hover:bg-white hover:text-background-dark transition-all"
+              class="w-full sm:w-auto px-10 py-4 border border-white/20 text-white font-bold text-[10px] uppercase tracking-[0.25em] hover:bg-white hover:text-background-dark transition-all text-center"
             >
               Contact Us
             </a>
@@ -141,6 +131,28 @@
 
 <!-- Swiper custom styling for premium feel -->
 <style>
+  .youtube-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw; /* 16:9 ratio */
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  @media (min-aspect-ratio: 16/9) {
+    .youtube-background {
+      height: 56.25vw;
+    }
+  }
+  @media (max-aspect-ratio: 16/9) {
+    .youtube-background {
+      width: 177.78vh;
+    }
+  }
+
   :global(.hero-slider .swiper-pagination-bullet) {
     background: rgba(255, 255, 255, 0.3) !important;
     opacity: 1 !important;
