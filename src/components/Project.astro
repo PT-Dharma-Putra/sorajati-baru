@@ -21,58 +21,83 @@ import { projects } from "../data/projects";
           Contract <span class="font-serif italic text-secondary">Installations</span>
         </h2>
       </div>
-      <p class="font-sans text-xs uppercase tracking-widest text-white/50 max-w-xs text-left md:text-right leading-relaxed">
-        Custom furniture systems engineered for high-traffic environments, healthcare facilities, and luxury hospitality.
+      <p class="font-sans text-[10px] md:text-xs uppercase tracking-widest text-white/50 max-w-sm text-left md:text-right leading-relaxed">
+        Customized, eco-friendly furnishings for rooms, dining areas, and lobbies—manufactured in Indonesia and exported globally for hospitality, restaurant, and healthcare sectors.
       </p>
     </div>
 
-    <!-- Projects Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {
-        projects.map((project) => (
-          <a
-            href={`/project/${project.slug}`}
-            class="group block bg-background-dark border border-white/10 hover:border-secondary/35 transition-all duration-500 overflow-hidden shadow-sm"
-          >
-            <!-- Project Thumbnail -->
-            <div class="aspect-[4/3] w-full overflow-hidden bg-white/5 relative">
-              <img
-                src={project.img}
-                alt={project.name}
-                class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 bg-background-dark/25 group-hover:bg-background-dark/10 transition-colors duration-500" />
-            </div>
-
-            <!-- Project Info -->
-            <div class="p-8 flex flex-col justify-between h-[220px]">
-              <div>
-                <div class="flex items-center justify-between mb-3">
-                  <span class="text-secondary text-[9px] font-bold tracking-widest uppercase">
-                    {project.client}
-                  </span>
-                  <span class="text-white/40 text-[10px] font-mono">
-                    {project.year}
-                  </span>
+    <!-- Projects Carousel (Swiper) -->
+    <div class="swiper project-slider w-full overflow-hidden mb-12 relative px-1">
+      <div class="swiper-wrapper">
+        {
+          projects.map((project) => (
+            <div class="swiper-slide h-auto">
+              <a
+                href={`/project/${project.slug}`}
+                class="group block bg-background-dark border border-white/10 hover:border-secondary/35 transition-all duration-500 overflow-hidden shadow-sm h-full flex flex-col"
+              >
+                <!-- Project Thumbnail -->
+                <div class="aspect-[4/3] w-full overflow-hidden bg-white/5 relative">
+                  <img
+                    src={project.img}
+                    alt={project.name}
+                    class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-background-dark/25 group-hover:bg-background-dark/10 transition-colors duration-500" />
                 </div>
-                <h3 class="font-display text-xl font-bold tracking-wide text-white group-hover:text-secondary transition-colors mb-3">
-                  {project.name}
-                </h3>
-                <p class="text-white/60 text-xs line-clamp-2 leading-relaxed font-sans font-light">
-                  {project.description}
-                </p>
-              </div>
 
-              <!-- Button CTA -->
-              <div class="flex items-center gap-2 text-secondary text-[9px] font-bold uppercase tracking-[0.2em] group-hover:gap-4 transition-all">
-                <span>View Details</span>
-                <span class="material-icons-outlined text-xs">east</span>
-              </div>
+                <!-- Project Info -->
+                <div class="p-8 flex flex-col justify-between flex-grow min-h-[220px]">
+                  <div>
+                    <div class="flex items-center justify-between mb-3">
+                      <span class="text-secondary text-[9px] font-bold tracking-widest uppercase">
+                        {project.client}
+                      </span>
+                      <span class="text-white/40 text-[10px] font-mono">
+                        {project.year}
+                      </span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold tracking-wide text-white group-hover:text-secondary transition-colors mb-3">
+                      {project.name}
+                    </h3>
+                    <p class="text-white/60 text-xs line-clamp-2 leading-relaxed font-sans font-light">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <!-- Button CTA -->
+                  <div class="flex items-center gap-2 text-secondary text-[9px] font-bold uppercase tracking-[0.2em] group-hover:gap-4 transition-all mt-4">
+                    <span>View Details</span>
+                    <span class="material-icons-outlined text-xs">east</span>
+                  </div>
+                </div>
+              </a>
             </div>
-          </a>
-        ))
-      }
+          ))
+        }
+      </div>
+      
+      <!-- Slider Navigation & Pagination -->
+      <div class="flex items-center justify-center gap-6 mt-12">
+        <div class="swiper-button-prev-project cursor-pointer text-white hover:text-secondary transition-colors flex items-center justify-center p-2 bg-white/5 border border-white/10 hover:border-secondary/35">
+          <span class="material-icons-outlined text-sm">west</span>
+        </div>
+        <div class="swiper-pagination-project !relative !bottom-0 !w-auto flex items-center gap-1.5"></div>
+        <div class="swiper-button-next-project cursor-pointer text-white hover:text-secondary transition-colors flex items-center justify-center p-2 bg-white/5 border border-white/10 hover:border-secondary/35">
+          <span class="material-icons-outlined text-sm">east</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- View All Button -->
+    <div class="flex justify-center mt-12 mb-6">
+      <a
+        href="/projects"
+        class="border border-secondary/40 text-secondary px-8 py-3.5 text-[9px] font-bold uppercase tracking-[0.25em] hover:bg-secondary hover:text-background-dark transition-all duration-300 font-sans"
+      >
+        View All Projects
+      </a>
     </div>
 
     <!-- Bottom Banner Info -->
@@ -92,3 +117,63 @@ import { projects } from "../data/projects";
     </div>
   </div>
 </section>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Autoplay } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
+
+  const initProjectSwiper = () => {
+    new Swiper(".project-slider", {
+      modules: [Navigation, Pagination, Autoplay],
+      slidesPerView: 1,
+      spaceBetween: 24,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination-project",
+        clickable: true,
+        bulletClass: "swiper-pagination-bullet-project",
+        bulletActiveClass: "swiper-pagination-bullet-active-project",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next-project",
+        prevEl: ".swiper-button-prev-project",
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 24,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 32,
+        },
+      },
+    });
+  };
+
+  document.addEventListener("astro:page-load", initProjectSwiper);
+  document.addEventListener("DOMContentLoaded", initProjectSwiper);
+</script>
+
+<style>
+  :global(.swiper-pagination-bullet-project) {
+    width: 6px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+  }
+  :global(.swiper-pagination-bullet-active-project) {
+    background-color: #C59B27 !important;
+    width: 24px;
+  }
+</style>

@@ -53,11 +53,11 @@ const { article, nextArticleSlug } = Astro.props;
       </div>
 
       <!-- Feature Image -->
-      <div class="relative h-[400px] md:h-[500px] overflow-hidden rounded-3xl shadow-md border border-primary/5 p-2 bg-white mb-16">
+      <div class="relative h-[300px] md:h-[450px] overflow-hidden rounded-3xl shadow-md border border-primary/5 p-2 bg-white mb-16 flex items-center justify-center">
         <img
           src={article.img}
           alt={article.title}
-          class="w-full h-full object-cover rounded-2xl"
+          class="w-full h-full object-contain rounded-2xl"
         />
       </div>
 
