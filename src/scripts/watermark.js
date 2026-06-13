@@ -10,7 +10,7 @@ export function applyWatermark(images) {
       images = [images];
   }
   
-  const logoSrc = '/images/logo-kjas.svg'; // Or generic logo if preferred
+  const logoSrc = '/images/logo-sora.svg'; // Or generic logo if preferred
 
   images.forEach(async (img) => {
     if (img.dataset.watermarked || img.closest('.watermark-wrapper')) return;

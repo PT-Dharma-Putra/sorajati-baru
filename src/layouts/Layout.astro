@@ -6,7 +6,7 @@ import { ClientRouter } from "astro:transitions";
 <html class="scroll-smooth overflow-x-hidden" lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/images/logo-kjas.svg" />
+    <link rel="icon" type="image/svg+xml" href="/images/logo-sora.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Sorajati Dharma Furniture | Luxury Earthy Elegance</title>
@@ -81,181 +81,94 @@ import { ClientRouter } from "astro:transitions";
           .forEach((el) => observer.observe(el));
       }
 
-      // Watermark function inlined to avoid SSR issues
-      function applyWatermark(images) {
-        if (typeof images === "string") {
-          images = document.querySelectorAll(images);
-        } else if (images instanceof HTMLImageElement) {
-          images = [images];
-        }
+      // Preload watermark logo
+      const logoImg = new Image();
+      logoImg.src = "/images/logo-sora.svg";
+      logoImg.crossOrigin = "anonymous";
 
-        const logoSrc = "/images/logo-kjas.svg";
+      // Watermark function applied on right-click save
+      function applyWatermark(img) {
+        if (!img || !(img instanceof HTMLImageElement)) return;
+        if (img.dataset.hasWatermark === "true" || img.src.startsWith("data:")) return;
 
-        images.forEach(async (img) => {
-          if (img.dataset.watermarked || img.closest(".watermark-wrapper"))
-            return;
+        // Skip tiny images like icons, swatches, and skip logos
+        if (img.naturalWidth < 120 || img.naturalHeight < 120) return;
+        if (img.src.toLowerCase().includes("logo")) return;
 
-          try {
-            if (!img.complete) {
-              await new Promise((resolve) => {
-                img.onload = resolve;
-                img.onerror = resolve;
-              });
-            }
+        try {
+          const canvas = document.createElement("canvas");
+          const ctx = canvas.getContext("2d");
+          canvas.width = img.naturalWidth || img.width;
+          canvas.height = img.naturalHeight || img.height;
 
-            const originalWidth = img.naturalWidth || img.width;
-            const originalHeight = img.naturalHeight || img.height;
+          // Draw original image
+          ctx.drawImage(img, 0, 0);
 
-            if (originalWidth < 100 || originalHeight < 100) return;
+          // Draw logo in the bottom right corner
+          if (logoImg.complete && logoImg.naturalWidth > 0) {
+            const logoWidth = canvas.width * 0.15;
+            const logoHeight = (logoImg.naturalHeight / logoImg.naturalWidth) * logoWidth;
+            const padding = canvas.width * 0.02;
 
-            const canvas = document.createElement("canvas");
-            const ctx = canvas.getContext("2d");
-            canvas.width = originalWidth;
-            canvas.height = originalHeight;
-
-            ctx.drawImage(img, 0, 0, originalWidth, originalHeight);
-
-            const text = "PT SORAJATI DHARMA";
             ctx.save();
-            ctx.translate(originalWidth / 2, originalHeight / 2);
-            ctx.rotate(-Math.PI / 6);
-
-            const fontSize = Math.max(20, Math.floor(originalWidth * 0.05));
-            ctx.font = `bold ${fontSize}px sans-serif`;
-
-            ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-            ctx.shadowBlur = 4;
-            ctx.fillText(text, 0, 0);
-            ctx.restore();
-
-            const logo = new Image();
-            logo.src = logoSrc;
-            logo.crossOrigin = "Anonymous";
-
-            await new Promise((resolve) => {
-              logo.onload = resolve;
-              logo.onerror = () => resolve();
-            });
-
-            if (logo.complete && logo.naturalWidth > 0) {
-              const logoWidth = originalWidth * 0.15;
-              const logoHeight =
-                (logo.naturalHeight / logo.naturalWidth) * logoWidth;
-              const padding = originalWidth * 0.02;
-
-              ctx.globalAlpha = 0.8;
-              ctx.drawImage(
-                logo,
-                originalWidth - logoWidth - padding,
-                originalHeight - logoHeight - padding,
-                logoWidth,
-                logoHeight,
-              );
-              ctx.globalAlpha = 1.0;
-            }
-
-            const isPng = img.src.toLowerCase().split("?")[0].endsWith(".png");
-            const watermarkedUrl = canvas.toDataURL(
-              isPng ? "image/png" : "image/jpeg",
-              isPng ? 1.0 : 0.9,
+            ctx.globalAlpha = 0.85; // subtle watermark transparency
+            ctx.drawImage(
+              logoImg,
+              canvas.width - logoWidth - padding,
+              canvas.height - logoHeight - padding,
+              logoWidth,
+              logoHeight
             );
 
-            const wrapper = document.createElement("div");
-            wrapper.classList.add("watermark-wrapper");
-            wrapper.className = img.className;
-            wrapper.style.position = "relative";
-            wrapper.style.display =
-              window.getComputedStyle(img).display === "block"
-                ? "block"
-                : "inline-block";
-            wrapper.style.overflow = "hidden";
-
-            const originalStyle = window.getComputedStyle(img);
-            const fit = originalStyle.objectFit || "cover";
-            const position = originalStyle.objectPosition || "center";
-
-            wrapper.style.backgroundImage = `url("${img.src}")`;
-            wrapper.style.backgroundSize =
-              fit === "cover"
-                ? "cover"
-                : fit === "contain"
-                  ? "contain"
-                  : "100% 100%";
-            wrapper.style.backgroundPosition = position;
-            wrapper.style.backgroundRepeat = "no-repeat";
-
-            const watermarkedImg = new Image();
-            watermarkedImg.src = watermarkedUrl;
-            watermarkedImg.style.display = "block";
-            watermarkedImg.style.width = "100%";
-            watermarkedImg.style.height = "100%";
-            watermarkedImg.style.objectFit = fit;
-            watermarkedImg.style.opacity = "0.01";
-            watermarkedImg.style.cursor = "inherit";
-            watermarkedImg.alt = img.alt;
-            watermarkedImg.dataset.watermarked = "true";
-
-            img.parentNode.insertBefore(wrapper, img);
-            wrapper.appendChild(watermarkedImg);
-            img.remove();
-          } catch (e) {
-            console.error("Error watermarking image:", e);
+            // Draw company name next to the logo
+            ctx.font = `bold ${Math.max(12, Math.floor(canvas.width * 0.022))}px sans-serif`;
+            ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+            ctx.shadowColor = "rgba(0, 0, 0, 0.7)";
+            ctx.shadowBlur = 4;
+            ctx.textAlign = "right";
+            ctx.textBaseline = "middle";
+            const textX = canvas.width - logoWidth - padding - 12;
+            const textY = canvas.height - (logoHeight / 2) - padding;
+            ctx.fillText("PT. Sorajati Dharma", textX, textY);
+            ctx.restore();
           }
-        });
+
+          const isPng = img.src.toLowerCase().split("?")[0].endsWith(".png");
+          const watermarkedUrl = canvas.toDataURL(
+            isPng ? "image/png" : "image/jpeg",
+            isPng ? 1.0 : 0.9
+          );
+
+          const originalSrc = img.src;
+          img.dataset.originalSrc = originalSrc;
+          img.src = watermarkedUrl;
+          img.dataset.hasWatermark = "true";
+
+          // Restore original src after 1 second so the web preview remains clean
+          setTimeout(() => {
+            if (img.dataset.hasWatermark === "true") {
+              img.src = img.dataset.originalSrc;
+              img.dataset.hasWatermark = "false";
+            }
+          }, 1000);
+        } catch (e) {
+          console.error("Error applying watermark:", e);
+        }
       }
 
-      const runWatermark = () => {
-        const images = document.querySelectorAll(
-          "#main-content img:not([data-watermark-processed])",
-        );
-        images.forEach((img) => {
-          // Mark as processed immediately
-          img.setAttribute("data-watermark-processed", "true");
-          
-          // Skip hero banner images, navbar, footer, and logo images
-          if (
-            img.closest("#home") || 
-            img.closest("nav") || 
-            img.closest("footer") || 
-            img.src.toLowerCase().includes("logo")
-          ) {
-            return;
+      const initWatermarkListener = () => {
+        // Intercept right-clicks (mousedown and contextmenu) to apply watermark
+        document.addEventListener("mousedown", (e) => {
+          if (e.button === 2 && e.target instanceof HTMLImageElement) {
+            applyWatermark(e.target);
           }
-          
-          // applyWatermark(img); // Disabled for testing
-        });
-      };
+        }, { capture: true, passive: true });
 
-      const observeImages = () => {
-        const target = document.getElementById("main-content");
-        if (!target) return;
-
-        const observer = new MutationObserver((mutations) => {
-          let needsRun = false;
-          mutations.forEach((mutation) => {
-            mutation.addedNodes.forEach((node) => {
-              if (node instanceof HTMLElement) {
-                if (
-                  node.tagName === "IMG" &&
-                  !node.hasAttribute("data-watermark-processed")
-                ) {
-                  needsRun = true;
-                } else if (
-                  node.querySelectorAll("img:not([data-watermark-processed])")
-                    .length > 0
-                ) {
-                  needsRun = true;
-                }
-              }
-            });
-          });
-          if (needsRun) runWatermark();
-        });
-
-        observer.observe(target, { childList: true, subtree: true });
+        document.addEventListener("contextmenu", (e) => {
+          if (e.target instanceof HTMLImageElement) {
+            applyWatermark(e.target);
+          }
+        }, { capture: true });
       };
 
       function initInteractivePremium() {
@@ -331,11 +244,7 @@ import { ClientRouter } from "astro:transitions";
       const init = () => {
         initReveal();
         initInteractivePremium();
-        runWatermark();
-        observeImages();
-        // Fallback for any late-loading dynamic content
-        setTimeout(runWatermark, 1000);
-        setTimeout(runWatermark, 3000);
+        initWatermarkListener();
       };
 
       window.addEventListener("load", init);
