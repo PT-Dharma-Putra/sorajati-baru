@@ -22,8 +22,6 @@ import { ClientRouter } from "astro:transitions";
     class="bg-background-light text-background-dark font-sans overflow-x-hidden"
   >
     <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-primary to-secondary z-[999] transition-all duration-100" style="width: 0%"></div>
-    <div id="custom-cursor-dot" class="fixed w-2 h-2 bg-secondary rounded-full pointer-events-none z-[9999] opacity-0 transition-opacity duration-300 hidden md:block mix-blend-difference"></div>
-    <div id="custom-cursor-outline" class="fixed w-8 h-8 border border-secondary/50 rounded-full pointer-events-none z-[9998] opacity-0 transition-all duration-300 ease-out -translate-x-1/2 -translate-y-1/2 hidden md:block mix-blend-difference"></div>
     <main id="main-content">
       <slot />
     </main>
@@ -172,57 +170,7 @@ import { ClientRouter } from "astro:transitions";
       };
 
       function initInteractivePremium() {
-        const dot = document.getElementById("custom-cursor-dot");
-        const outline = document.getElementById("custom-cursor-outline");
         const scrollBar = document.getElementById("scroll-progress");
-
-        if (!dot || !outline) return;
-
-        let mouseX = 0, mouseY = 0;
-        let outlineX = 0, outlineY = 0;
-
-        // Mouse Move Event
-        window.addEventListener("mousemove", (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-          
-          dot.style.opacity = "1";
-          outline.style.opacity = "1";
-          
-          dot.style.left = `${mouseX}px`;
-          dot.style.top = `${mouseY}px`;
-        });
-
-        // Animation Loop for Smooth Trailing Effect
-        const animateCursor = () => {
-          const dx = mouseX - outlineX;
-          const dy = mouseY - outlineY;
-          
-          outlineX += dx * 0.15;
-          outlineY += dy * 0.15;
-          
-          outline.style.left = `${outlineX}px`;
-          outline.style.top = `${outlineY}px`;
-          
-          requestAnimationFrame(animateCursor);
-        };
-        requestAnimationFrame(animateCursor);
-
-        // Hover Effect on clickable elements
-        const addHoverEvents = () => {
-          const clickables = document.querySelectorAll("a, button, [role='button'], .product-card-item, .filter-tab-btn");
-          clickables.forEach((el) => {
-            el.addEventListener("mouseenter", () => {
-              dot.classList.add("scale-[2.5]", "bg-secondary");
-              outline.classList.add("scale-[1.8]", "border-secondary");
-            });
-            el.addEventListener("mouseleave", () => {
-              dot.classList.remove("scale-[2.5]", "bg-secondary");
-              outline.classList.remove("scale-[1.8]", "border-secondary");
-            });
-          });
-        };
-        addHoverEvents();
 
         // Scroll Progress
         window.addEventListener("scroll", () => {
@@ -232,12 +180,6 @@ import { ClientRouter } from "astro:transitions";
           if (scrollBar) {
             scrollBar.style.width = `${scrolled}%`;
           }
-        });
-        
-        // Hide cursor when leaving window
-        document.addEventListener("mouseleave", () => {
-          dot.style.opacity = "0";
-          outline.style.opacity = "0";
         });
       }
 
