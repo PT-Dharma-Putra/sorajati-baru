@@ -5,7 +5,7 @@ import { productCategories } from "../data/products";
 const allProducts = productCategories.flatMap((category) => category.items);
 const featuredProducts = allProducts.slice(0, 8);
 // Unique filters
-const filterCategories = ["ALL", "Chair", "Sofa", "Table", "Bench", "Accessories"];
+const filterCategories = ["ALL", "Chair", "Stool", "Sofa", "Table", "Bench", "Accessories"];
 ---
 
 <section id="product" class="py-32 bg-[#FAF7F2] border-b border-primary/5">
@@ -60,6 +60,7 @@ const filterCategories = ["ALL", "Chair", "Sofa", "Table", "Bench", "Accessories
                 alt={item.name}
                 class="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
+                decoding="async"
               />
               <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <span class="bg-white text-primary px-4 py-2 text-[9px] font-bold tracking-[0.25em] uppercase border border-primary/15 shadow-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
@@ -279,14 +280,14 @@ const filterCategories = ["ALL", "Chair", "Sofa", "Table", "Bench", "Accessories
             galleryWrapper.innerHTML = images
               .map(
                 (src: string) =>
-                  `<div class="swiper-slide bg-white flex items-center justify-center p-4 h-full"><img src="${src}" class="max-w-full max-h-full w-auto h-auto object-contain mx-auto" loading="lazy" /></div>`,
+                  `<div class="swiper-slide bg-white flex items-center justify-center p-4 h-full"><img src="${src}" class="max-w-full max-h-full w-auto h-auto object-contain mx-auto" loading="lazy" decoding="async" /></div>`,
               )
               .join("");
 
             thumbsWrapper.innerHTML = images
               .map(
                 (src: string) =>
-                  `<div class="swiper-slide cursor-pointer border border-primary/10 overflow-hidden transition-all hover:border-primary flex items-center justify-center h-full bg-white"><img src="${src}" class="w-full h-full object-cover" loading="lazy" /></div>`,
+                  `<div class="swiper-slide cursor-pointer border border-primary/10 overflow-hidden transition-all hover:border-primary flex items-center justify-center h-full bg-white"><img src="${src}" class="w-full h-full object-cover" loading="lazy" decoding="async" /></div>`,
               )
               .join("");
           }

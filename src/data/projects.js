@@ -1,7 +1,7 @@
 export const projects = [
     {
         slug: "kammora-living",
-        name: "Kammora Living",
+        name: "Villa in Bali",
         img: "/images/projects/1. KAMMORA LIVING/IMG_0325.jpg",
         images: [
             "/images/projects/1. KAMMORA LIVING/IMG_0325.jpg",
@@ -12,7 +12,7 @@ export const projects = [
             "/images/projects/1. KAMMORA LIVING/IMG_0366.jpg",
             "/images/projects/1. KAMMORA LIVING/IMG_0367.jpg"
         ],
-        client: "KAMMORA LIVING",
+        client: "VILA IN BALI",
         year: "2025",
         started: "05/2025",
         finished: "06/2025",
@@ -112,7 +112,7 @@ export const projects = [
     },
     {
         slug: "bloody-mary-resort",
-        name: "Bloody Mary Resort",
+        name: "Resort in French",
         img: "/images/projects/6. Bloody Mary/3d_page-0001.jpg",
         images: [
             "/images/projects/6. Bloody Mary/3d_page-0001.jpg",
@@ -121,10 +121,10 @@ export const projects = [
             "/images/projects/6. Bloody Mary/3d_page-0004.jpg",
             "/images/projects/6. Bloody Mary/3d_page-0005.jpg"
         ],
-        client: "BLOODY MARY RESORT",
+        client: "Resort in French",
         year: "2025-2026",
         category: "Hospitality",
-        location: "Bora Bora, French Polynesia",
+        location: "French Polynesia",
         description: "Sorajati Dharma Biru proudly delivered the Bloody Mary Resort project in Bora Bora Island, French Polynesia. Crafting high-quality furniture designed to elevate comfort and aesthetics. Every detail was thoughtfully executed to create a harmonious living experience, blending refined design, functional comfort, and durable materials. This project reflects our commitment to exceptional craftsmanship, ensuring furniture that not only enhances visual appeal but also supports everyday living with lasting quality.",
         furniture: [
             "Seating & Sofas: 1-seater sofas, 2-seater sofas, 2.5-seater sofas, 3-seater sofas (Front Office & Pharmacy), 5-seater sofas, Single sofas, Wall-mounted single sofas, Nursing sofas, Child development sofas, Photo-spot sofas, Chaise lounges, Sofa beds, Single chairs, Lazy chairs, Lobby puffs, and Counter chairs.",

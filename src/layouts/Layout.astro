@@ -102,32 +102,56 @@ import { ClientRouter } from "astro:transitions";
           // Draw original image
           ctx.drawImage(img, 0, 0);
 
-          // Draw logo in the bottom right corner
+          // Draw logo and text in the center of the image
           if (logoImg.complete && logoImg.naturalWidth > 0) {
-            const logoWidth = canvas.width * 0.15;
+            const logoWidth = canvas.width * 0.12;
             const logoHeight = (logoImg.naturalHeight / logoImg.naturalWidth) * logoWidth;
-            const padding = canvas.width * 0.02;
+            const gap = canvas.width * 0.02;
 
             ctx.save();
-            ctx.globalAlpha = 0.85; // subtle watermark transparency
+            ctx.globalAlpha = 0.6; // subtle watermark transparency for center placement
+            
+            // Set font first to measure text
+            const fontSize = Math.max(16, Math.floor(canvas.width * 0.045));
+            ctx.font = `bold ${fontSize}px sans-serif`;
+            ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+            ctx.shadowColor = "rgba(0, 0, 0, 0.7)";
+            ctx.shadowBlur = 4;
+
+            const text = "Sorajati Dharma Biru";
+            const textMetrics = ctx.measureText(text);
+            const textWidth = textMetrics.width;
+            
+            const totalWidth = logoWidth + gap + textWidth;
+            const startX = (canvas.width - totalWidth) / 2;
+            const centerY = canvas.height / 2;
+
+            // Draw logo
             ctx.drawImage(
               logoImg,
-              canvas.width - logoWidth - padding,
-              canvas.height - logoHeight - padding,
+              startX,
+              centerY - (logoHeight / 2),
               logoWidth,
               logoHeight
             );
 
             // Draw company name next to the logo
-            ctx.font = `bold ${Math.max(12, Math.floor(canvas.width * 0.022))}px sans-serif`;
+            ctx.textAlign = "left";
+            ctx.textBaseline = "middle";
+            ctx.fillText(text, startX + logoWidth + gap, centerY);
+            ctx.restore();
+          } else {
+            // Fallback if logo not loaded
+            ctx.save();
+            ctx.globalAlpha = 0.6;
+            const fontSize = Math.max(16, Math.floor(canvas.width * 0.045));
+            ctx.font = `bold ${fontSize}px sans-serif`;
             ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
             ctx.shadowColor = "rgba(0, 0, 0, 0.7)";
             ctx.shadowBlur = 4;
-            ctx.textAlign = "right";
+            ctx.textAlign = "center";
             ctx.textBaseline = "middle";
-            const textX = canvas.width - logoWidth - padding - 12;
-            const textY = canvas.height - (logoHeight / 2) - padding;
-            ctx.fillText("PT. Sorajati Dharma", textX, textY);
+            ctx.fillText("Sorajati Dharma Biru", canvas.width / 2, canvas.height / 2);
             ctx.restore();
           }
 

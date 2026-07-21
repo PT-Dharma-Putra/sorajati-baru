@@ -1,11 +1,11 @@
 <section
   id="home"
-  class="relative w-full h-[80vh] min-h-[500px] md:h-[56.25vw] overflow-hidden bg-background-dark"
+  class="relative w-full h-screen min-h-[500px] overflow-hidden bg-background-dark"
 >
-  <!-- Swiper Slider -->
-  <div class="swiper hero-slider absolute inset-0 z-0 h-full w-full">
-    <div class="swiper-wrapper">
-      <!-- Slide 1: Tokyo Exhibition (Image Only) -->
+  <!-- Swiper Slider (Commented out/Disabled) -->
+  <div class="relative inset-0 z-0 h-full w-full">
+    <div class="h-full w-full">
+      <!-- Slide 1: Tokyo Exhibition (Image Only) - Commented Out
       <div
         class="swiper-slide relative h-full w-full flex items-center justify-center bg-background-dark"
       >
@@ -21,17 +21,19 @@
           />
         </a>
       </div>
+      -->
 
       <!-- Slide 2: Exotic Wood Culture (Original Hero with Text Overlays) -->
       <div
-        class="swiper-slide relative h-full w-full flex items-start justify-center pt-28 md:pt-36"
+        class="relative h-full w-full flex items-center justify-center"
       >
         <div class="absolute inset-0 overflow-hidden">
           <iframe
             src="https://www.youtube.com/embed/Vq3joj1hbk0?autoplay=1&mute=1&loop=1&playlist=Vq3joj1hbk0&controls=0&showinfo=0&rel=0&iv_load_policy=3&start=58&playsinline=1"
             class="youtube-background filter brightness-[0.7]"
             allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
-            frameborder="0"></iframe>
+            frameborder="0"
+            loading="lazy"></iframe>
           <div
             class="absolute inset-0 bg-gradient-to-b from-background-dark/25 via-background-dark/45 to-background-dark/20"
           >
@@ -55,8 +57,13 @@
           <h1
             class="font-display text-5xl sm:text-6xl md:text-8xl text-white mb-8 leading-[1.05] tracking-tight text-left"
           >
-            <span class="font-light tracking-wider uppercase block sm:inline">Java</span>
-            <span class="font-serif italic font-normal text-secondary block sm:inline sm:ml-4">Abode</span>
+            <span class="font-light tracking-wider uppercase block sm:inline"
+              >Java</span
+            >
+            <span
+              class="font-serif italic font-normal text-secondary block sm:inline sm:ml-4"
+              >Abode</span
+            >
           </h1>
 
           <p
@@ -86,11 +93,12 @@
       </div>
     </div>
 
-    <!-- Swiper Pagination -->
+    <!-- Swiper Pagination (Commented Out)
     <div class="swiper-pagination !bottom-24 !left-1/2 !-translate-x-1/2 !z-20">
     </div>
+    -->
 
-    <!-- Navigation Arrows -->
+    <!-- Navigation Arrows (Commented Out)
     <button
       class="hero-swiper-prev absolute left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 border border-white/20 hover:border-white text-white hover:bg-white/10 transition-all flex items-center justify-center hidden md:flex"
       aria-label="Previous slide"
@@ -103,6 +111,7 @@
     >
       <span class="material-icons-outlined">keyboard_arrow_right</span>
     </button>
+    -->
   </div>
 
   <div
@@ -136,20 +145,23 @@
     height: 56.25vw; /* 16:9 ratio */
     min-width: 100%;
     min-height: 100%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1.15); /* Scale up slightly to crop any player border/black bars */
     pointer-events: none;
   }
   @media (min-aspect-ratio: 16/9) {
     .youtube-background {
       height: 56.25vw;
+      transform: translate(-50%, -50%) scale(1.15);
     }
   }
   @media (max-aspect-ratio: 16/9) {
     .youtube-background {
       width: 177.78vh;
+      transform: translate(-50%, -50%) scale(1.15);
     }
   }
 
+  /* Swiper Bullets styling (Commented out in stylesheet if not active)
   :global(.hero-slider .swiper-pagination-bullet) {
     background: rgba(255, 255, 255, 0.3) !important;
     opacity: 1 !important;
@@ -159,40 +171,45 @@
     transition: all 0.3s ease !important;
   }
   :global(.hero-slider .swiper-pagination-bullet-active) {
-    background: #c59b27 !important; /* Gold */
+    background: #c59b27 !important;
     width: 48px !important;
   }
+  */
 
-  /* Text reveal animation on slide active state */
+  /* Direct text reveal animation on page load */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   .hero-slide-content > * {
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
-  :global(.swiper-slide-active .hero-slide-content > *:nth-child(1)) {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.2s;
+  .hero-slide-content > *:nth-child(1) {
+    animation-delay: 0.2s;
   }
-  :global(.swiper-slide-active .hero-slide-content > *:nth-child(2)) {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.4s;
+  .hero-slide-content > *:nth-child(2) {
+    animation-delay: 0.4s;
   }
-  :global(.swiper-slide-active .hero-slide-content > *:nth-child(3)) {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.6s;
+  .hero-slide-content > *:nth-child(3) {
+    animation-delay: 0.6s;
   }
-  :global(.swiper-slide-active .hero-slide-content > *:nth-child(4)) {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 0.8s;
+  .hero-slide-content > *:nth-child(4) {
+    animation-delay: 0.8s;
   }
 </style>
 
 <script>
+  /* Swiper code commented out as slider is disabled and only video is shown
   import Swiper from "swiper";
   import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
   import "swiper/css";
@@ -221,7 +238,7 @@
     });
   }
 
-  // Handle load and page-transitions
   document.addEventListener("DOMContentLoaded", initHeroSlider);
   document.addEventListener("astro:page-load", initHeroSlider);
+  */
 </script>
