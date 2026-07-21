@@ -38,24 +38,7 @@ export function applyWatermark(images) {
       // Draw original image
       ctx.drawImage(img, 0, 0, originalWidth, originalHeight);
 
-      // --- 1. Draw Text Watermark (Diagonal) ---
-      const text = "PT SORAJATI DHARMA";
-      ctx.save();
-      ctx.translate(originalWidth / 2, originalHeight / 2);
-      ctx.rotate(-Math.PI / 6); 
-      
-      const fontSize = Math.max(20, Math.floor(originalWidth * 0.05)); 
-      ctx.font = `bold ${fontSize}px sans-serif`;
-      
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'; 
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-      ctx.shadowBlur = 4;
-      ctx.fillText(text, 0, 0);
-      ctx.restore();
-
-      // --- 2. Draw Logo (Bottom Right) ---
+      // --- 1. Load Logo ---
       const logo = new Image();
       logo.src = logoSrc;
       logo.crossOrigin = "Anonymous"; 
@@ -65,21 +48,46 @@ export function applyWatermark(images) {
         logo.onerror = () => resolve();
       });
 
-      if (logo.complete && logo.naturalWidth > 0) {
-        const logoWidth = originalWidth * 0.15;
-        const logoHeight = (logo.naturalHeight / logo.naturalWidth) * logoWidth;
-        const padding = originalWidth * 0.02;
+      // --- 2. Draw Centered Watermark (Logo + Text) ---
+      ctx.save();
+      ctx.globalAlpha = 0.6; // subtle watermark transparency for center placement
+      
+      const fontSize = Math.max(16, Math.floor(originalWidth * 0.045)); 
+      ctx.font = `bold ${fontSize}px sans-serif`;
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.9)'; 
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
+      ctx.shadowBlur = 4;
 
-        ctx.globalAlpha = 0.8;
+      const text = "Sorajati Dharma Biru";
+      const textMetrics = ctx.measureText(text);
+      const textWidth = textMetrics.width;
+      
+      const centerY = originalHeight / 2;
+
+      if (logo.complete && logo.naturalWidth > 0) {
+        const logoWidth = originalWidth * 0.12;
+        const logoHeight = (logo.naturalHeight / logo.naturalWidth) * logoWidth;
+        const gap = originalWidth * 0.02;
+        const totalWidth = logoWidth + gap + textWidth;
+        const startX = (originalWidth - totalWidth) / 2;
+
         ctx.drawImage(
           logo, 
-          originalWidth - logoWidth - padding, 
-          originalHeight - logoHeight - padding, 
+          startX, 
+          centerY - (logoHeight / 2), 
           logoWidth, 
           logoHeight
         );
-        ctx.globalAlpha = 1.0;
+
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(text, startX + logoWidth + gap, centerY);
+      } else {
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(text, originalWidth / 2, centerY);
       }
+      ctx.restore();
 
       // Use PNG if we want to preserve transparency, otherwise JPEG for efficiency
       // Actually, let's check extension or just default to PNG for better quality if it's a content image
